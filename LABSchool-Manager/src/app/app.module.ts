@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CreateEditComponent } from './Atendimentos/components/create-edit/create-edit.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateEditComponent
   ],
   imports: [
     BrowserModule,
