@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateEditComponent } from './Atendimentos/components/create-edit/create-edit.component';
+import { AuthModule } from './auth/auth.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,9 @@ import { CreateEditComponent } from './Atendimentos/components/create-edit/creat
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AuthModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
