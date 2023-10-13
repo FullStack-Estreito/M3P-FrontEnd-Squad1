@@ -12,6 +12,10 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    LoginComponent,
+    ResetPasswordComponent
   ]
 })
 export class AuthModule { }

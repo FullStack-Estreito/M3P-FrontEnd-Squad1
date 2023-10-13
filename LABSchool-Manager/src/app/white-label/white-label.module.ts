@@ -10,6 +10,9 @@ import { WhiteLabelComponent } from './components/white-label/white-label.compon
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    WhiteLabelComponent
   ]
 })
 export class WhiteLabelModule { }
