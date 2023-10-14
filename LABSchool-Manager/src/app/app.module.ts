@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { WhiteLabelModule } from './white-label/white-label.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AuthModule,
     CoreModule,
+    WhiteLabelModule,
     HttpClientModule,
     FormsModule
     

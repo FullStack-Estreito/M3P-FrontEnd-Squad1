@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { WhiteLabelComponent } from './components/white-label/white-label.component';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -9,7 +10,8 @@ import { WhiteLabelComponent } from './components/white-label/white-label.compon
     WhiteLabelComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CoreModule,
   ],
   exports: [
     WhiteLabelComponent
