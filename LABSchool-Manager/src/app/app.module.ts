@@ -7,6 +7,7 @@ import { CreateEditComponent } from './Atendimentos/components/create-edit/creat
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     AuthModule,
     CoreModule,
     HttpClientModule,
+    FormsModule
     
   ],
   providers: [],
