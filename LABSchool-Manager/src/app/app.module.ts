@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CreateEditComponent } from './Atendimentos/components/create-edit/create-edit.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { CoreModule } from './core/core.module';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
