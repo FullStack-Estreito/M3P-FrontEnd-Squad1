@@ -13,7 +13,6 @@ export class AuthService {
     this.currentUserSubject = new BehaviorSubject<string | null>(this.getLocalUser());
     this.currentUser = this.currentUserSubject.asObservable();
   }
-
   private getLocalUser(): string | null {
     const user = localStorage.getItem('currentUser');
     return user ? JSON.parse(user).username : null; // Usando username para o currentUser
@@ -27,5 +26,4 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
-
 }

@@ -16,7 +16,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.currentUser.subscribe(x => this.currentUser = x);
-
     // Subscribe ao evento de navegação para ativar/desativar o loading
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
@@ -29,19 +28,16 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
-  
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
   // Método para lidar com a navegação manual
   navigateTo(route: string) {
     // Verifique se a rota é a mesma que a atual antes de ativar o spinner
     if (this.router.url !== route) {
       this.isLoading = true;
     }
-
     // Usamos setTimeout para garantir que o spinner seja exibido
     // mesmo em navegações rápidas dentro da mesma página
     setTimeout(() => {
