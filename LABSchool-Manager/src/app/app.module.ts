@@ -9,6 +9,7 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { WhiteLabelModule } from './white-label/white-label.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { WhiteLabelModule } from './white-label/white-label.module';
     CoreModule,
     WhiteLabelModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    UsuariosModule
     
   ],
   providers: [],
