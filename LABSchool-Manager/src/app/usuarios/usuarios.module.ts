@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { CreateEditComponent } from './components/create-edit/create-edit.component';
 import { ListComponent } from './components/list/list.component';
 import { DetailsComponent } from './components/details/details.component';
+import { CoreModule } from "../core/core.module";
 
 
 
 @NgModule({
-  declarations: [
-    CreateEditComponent,
-    ListComponent,
-    DetailsComponent
-  ],
-  imports: [
-    CommonModule
-  ]
+    declarations: [
+        CreateEditComponent,
+        ListComponent,
+        DetailsComponent
+    ],
+    imports: [
+        CommonModule,
+        CoreModule
+    ],
+    
 })
 export class UsuariosModule { }
