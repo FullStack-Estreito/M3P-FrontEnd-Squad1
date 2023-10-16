@@ -13,6 +13,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { AtendimentosModule } from './Atendimentos/atendimentos.module';
 import { LogsModule } from './logs/logs.module';
 import { ExerciciosModule } from './exercicios/exercicios.module';
+import { AvaliacoesModule } from './Avaliacoes/avaliacoes.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ExerciciosModule } from './exercicios/exercicios.module';
     UsuariosModule,
     AtendimentosModule,
     LogsModule,
-    ExerciciosModule
+    ExerciciosModule,
+    AvaliacoesModule
     
   ],
   providers: [],
