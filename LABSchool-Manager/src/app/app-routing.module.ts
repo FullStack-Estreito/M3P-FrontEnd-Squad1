@@ -6,6 +6,7 @@ import { ResetPasswordComponent } from './auth/components/reset-password/reset-p
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
 import { CreateEditComponent as AtendimentoCreateEdit} from './Atendimentos/components/create-edit/create-edit.component';
 import { CreateEditComponent as ExercicioCreateEdit } from './exercicios/components/create-edit/create-edit.component';
+import { CreateEditComponent as AvaliacoesCreateEdit } from './Avaliacoes/components/create-edit/create-edit.component';
 import { ListComponent } from './usuarios/components/list/list.component';
 import { DetailsComponent } from './usuarios/components/details/details.component';
 import { WhiteLabelComponent } from './white-label/components/white-label/white-label.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'atendimentos/edit', component: AtendimentoCreateEdit },
+  { path: 'avaliacoes/edit', component: AvaliacoesCreateEdit },
   { path: 'exercicios/edit', component: ExercicioCreateEdit },
   { path: 'usuarios', component: ListComponent },
   { path: 'usuarios/details', component: DetailsComponent },

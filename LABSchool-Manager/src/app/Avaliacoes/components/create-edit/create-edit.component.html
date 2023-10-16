@@ -1,1 +1,74 @@
-<p>create-edit works!</p>
+
+
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="container my-5">
+  <div class="d-flex justify-content-center align-items-center" style="min-height: calc(100vh - 40px);">
+    <div class="card p-4" style="width: 800px; max-width: 100%; background-color: #f5f5f5;">
+      <div class="container">
+        <img src="../../../assets//img/labScool-logo.png" alt="Logo"
+          style="width: 200px; height: 200px; object-fit: cover; display: block; margin-left: auto; margin-right: auto;">
+        <div class="container my-5 d-flex flex-column min-vh-100">
+          <h2 class="mb-4">Cadastro/Edição de Avaliações</h2>
+          <h3>Selecione o Aluno</h3>
+          <form>
+            <div class="form-group">
+              <label for="Aluno">Aluno:</label>
+              <select class="form-control" id="aluno" formControlName="aluno">
+                <option value=""></option>
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+              </select>
+            </div>
+            <br>
+            <br>
+            <h3>Informações ds Exercícios</h3>
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" class="form-control" id="titulo" placeholder="Titulo" formControlName="titulo" maxlength="255" minlength="8">
+              </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <textarea class="form-control" id="descricao" placeholder="Descrição" formControlName="descricao" rows="6" cols="50" maxlength="255"></textarea>
+                <div class="invalid-feedback">
+                  A descrição deve conter entre 15 e 255 caracteres.
+                </div>
+                <div class="form-group">
+                    <label for="codigoProfessor">Código do Professor:</label>
+                    <input type="number" class="form-control" id="codigoProfessor" placeholder="Código do Professor" formControlName="materia" min="0" max="200">
+                  </div>
+                <div class="form-group">
+                    <label for="materia">Matéria:</label>
+                    <input type="text" class="form-control" id="titulo" placeholder="Matéria" formControlName="materia">
+                  </div>
+                  <div class="form-group">
+                    <label for="pontuacao">Pontuação:</label>
+                    <input type="number" class="form-control" id="pontuacao" placeholder="Pontuação" formControlName="pontuacao" min="0" max="200">
+                  </div>
+                  <div class="form-group">
+                    <label for="nota">Nota:</label>
+                    <input type="number" class="form-control" id="nota" placeholder="Nota" formControlName="nota" min="0" max="10">
+                  </div>
+              </div>
+              <div class="form-group">
+                <label for="dataConclusao">Data de Conclusão:</label>
+                <input type="date" class="form-control" id="dataConclusao" formControlName="dataConclusao">
+                <div  class="invalid-feedback">
+                  A data é obrigatória.
+                </div>
+              </div>
+              <div class="my-4">
+                <button routerLink="/atendimentos/edit" class="btn btn-secondary mx-2 my-2"><i class="fas fa-arrow-left"></i>
+                    Voltar para detalhamento de aluno </button>
+                <button type="submit" class="btn btn-info mx-2 my-2"><i class="fas fa-save"></i> Salvar</button>
+                  <button type="button" class="btn btn-danger mx-2 my-2" ><i class="fas fa-trash"></i> Deletar</button>  
+              </div> 
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

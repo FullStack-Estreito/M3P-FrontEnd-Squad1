@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CoreModule } from '../core/core.module';
+import { CreateEditComponent } from './components/create-edit/create-edit.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    CreateEditComponent
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+    CoreModule
   ]
 })
 export class AvaliacoesModule { }
