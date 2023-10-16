@@ -12,6 +12,7 @@ import { WhiteLabelModule } from './white-label/white-label.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { AtendimentosModule } from './Atendimentos/atendimentos.module';
 import { LogsModule } from './logs/logs.module';
+import { ExerciciosModule } from './exercicios/exercicios.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { LogsModule } from './logs/logs.module';
     FormsModule,
     UsuariosModule,
     AtendimentosModule,
-    LogsModule
+    LogsModule,
+    ExerciciosModule
     
   ],
   providers: [],
