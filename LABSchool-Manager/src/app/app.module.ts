@@ -10,11 +10,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { WhiteLabelModule } from './white-label/white-label.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { AtendimentosModule } from './Atendimentos/atendimentos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateEditComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     WhiteLabelModule,
     HttpClientModule,
     FormsModule,
-    UsuariosModule
+    UsuariosModule,
+    AtendimentosModule
     
   ],
   providers: [],
