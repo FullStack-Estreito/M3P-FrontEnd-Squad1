@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';  // Importe o Router
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +8,12 @@ import { Component} from '@angular/core';
 })
 export class SidebarComponent {
 
-  
+  // Injete o Router no construtor
+  constructor(private router: Router) { }
 
+  // Método para navegar programaticamente
+  navigateTo(route: string) {
+    this.router.navigate([route]);
+  }
 }
+
