@@ -1,0 +1,72 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<br><br><br>
+<div class="container my-5">
+    <h2>Detalhamento do Aluno</h2>
+
+    <div class="form-group">
+        <label for="Aluno">Aluno:</label>
+        <select class="form-control" id="aluno" formControlName="aluno">
+          <option value=""></option>
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+        </select>
+      </div><br><br>
+    
+    <div class="card mb-4">
+        <div class="card-header">
+            Informações do Aluno
+        </div>
+        <div class="card-body">
+            <p><strong>Nome Completo:</strong> [Nome do Aluno]</p>
+            <p><strong>Gênero:</strong> [Gênero do Aluno]</p>
+            <p><strong>CPF:</strong> [CPF do Aluno]</p>
+            <p><strong>Telefone:</strong> [Telefone do Aluno]</p>
+            <p><strong>E-mail:</strong> [E-mail do Aluno]</p>
+            <p><strong>Tipo:</strong> [Tipo do Usuário]</p>
+            <p><strong>Endereço:</strong> CEP: [CEP], Cidade: [Cidade], Estado: [Estado], Logradouro: [Logradouro], Número: [Número], Complemento: [Complemento], Bairro: [Bairro], Ponto de Referência: [Ponto de Referência]</p>
+            <p><strong>Status do Sistema:</strong> Ativo</p>
+            <p><strong>Matrícula:</strong> [Matrícula do Aluno]</p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            Histórico de Atendimentos
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Atendimento em [data] - [detalhes]</li>
+            </ul>
+        </div>
+    </div>
+
+  
+    <div class="card mb-4">
+        <div class="card-header">
+            Exercícios
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Exercício de [matéria] em [data] - [detalhes]</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            Avaliações
+        </div>
+        <div class="card-body">
+            <ul>
+                <li>Avaliação de [matéria] em [data] - Nota: [nota]</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-warning">Editar Histórico</button>
+    </div>
+</div>
