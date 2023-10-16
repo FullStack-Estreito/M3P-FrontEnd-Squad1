@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LogsComponent } from './components/logs/logs.component';
+import { CoreModule } from '../core/core.module';
 
 
 
@@ -9,7 +10,8 @@ import { LogsComponent } from './components/logs/logs.component';
     LogsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CoreModule
   ]
 })
 export class LogsModule { }

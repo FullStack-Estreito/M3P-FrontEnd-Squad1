@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { WhiteLabelModule } from './white-label/white-label.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { AtendimentosModule } from './Atendimentos/atendimentos.module';
+import { LogsModule } from './logs/logs.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AtendimentosModule } from './Atendimentos/atendimentos.module';
     HttpClientModule,
     FormsModule,
     UsuariosModule,
-    AtendimentosModule
+    AtendimentosModule,
+    LogsModule
     
   ],
   providers: [],
