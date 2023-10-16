@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'exercicios/edit', component: ExercicioCreateEdit },
   { path: 'usuarios', component: ListComponent },
   { path: 'usuarios/details', component: DetailsComponent },
+  { path: 'alunos', component: DetailsComponent },//componente do modulo usuario
   { path: 'usuarios/criar-editar', component: CreateEditComponent },
   { path: 'white-label', component: WhiteLabelComponent },
   { path: 'logs', component: LogsComponent },
