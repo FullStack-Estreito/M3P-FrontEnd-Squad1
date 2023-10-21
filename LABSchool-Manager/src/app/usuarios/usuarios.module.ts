@@ -4,6 +4,7 @@ import { CreateEditComponent } from './components/create-edit/create-edit.compon
 import { ListComponent } from './components/list/list.component';
 import { DetailsComponent } from './components/details/details.component';
 import { CoreModule } from "../core/core.module";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,9 @@ import { CoreModule } from "../core/core.module";
     ],
     imports: [
         CommonModule,
-        CoreModule
+        CoreModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
     
 })
