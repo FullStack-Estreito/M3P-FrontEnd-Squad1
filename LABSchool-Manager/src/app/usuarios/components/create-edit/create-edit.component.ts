@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario.service';
-import { User } from '../../Model/user.model';
+import { User, TipoGenero, TipoUsuario, TipoEstado } from '../../Model/user.model';
 
 @Component({
   selector: 'app-create-edit',
@@ -11,6 +11,10 @@ import { User } from '../../Model/user.model';
 export class CreateEditComponent implements OnInit {
   userForm: FormGroup = new FormGroup({});
   isEditing: boolean = false;
+
+  generos: string[] = Object.values(TipoGenero).filter((v): v is string => typeof v === 'string');
+  tiposUsuario: string[] = Object.values(TipoUsuario).filter((v): v is string => typeof v === 'string');
+  estados: string[] = Object.values(TipoEstado).filter((v): v is string => typeof v === 'string');
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,19 +34,19 @@ export class CreateEditComponent implements OnInit {
       cpf: ['', Validators.required],
       telefone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      tipo: ['', Validators.required],
-      cep: [''],
-      cidade: [''],
-      estado: [''],
-      logradouro: [''],
-      numero: [''],
-      complemento: [''],
-      bairro: [''],
-      referencia: [''],
+      tipoUsuario: ['', Validators.required],
+      cep: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
+      estado: ['', Validators.required],
+      cidade: ['', [Validators.required, Validators.maxLength(100)]],
+      logradouro: ['', [Validators.required, Validators.maxLength(20)]],
+      numero: ['', [Validators.required, Validators.maxLength(10)]],
+      complemento: ['', Validators.maxLength(100)],
+      bairro: ['', [Validators.required, Validators.maxLength(120)]],
+      referencia: ['', Validators.maxLength(120)],
       matricula: [''],
-      codigoRegistro: [''],
-      whiteLabelId: [''],
-      status: ['', Validators.required],
+      codigoProfessor: [null], 
+      whiteLabelId: [0], 
+      statusAtivo: [true, Validators.required],
       senha: ['', Validators.required]
     });
   }
@@ -69,20 +73,20 @@ export class CreateEditComponent implements OnInit {
       
       let userToSubmit: User = {
         nome: formData.nome,
-        genero: formData.genero,
-        cpf: formData.cpf.replace(/\D/g, ''),
-        status: formData.status === "ativo" ? "ativo" : "inativo",
+        genero: +formData.genero, 
+        cpf: formData.cpf,
+        statusAtivo: formData.statusAtivo,
         telefone: formData.telefone,
         email: formData.email,
         senha: formData.senha,
-        tipo: formData.tipo,
+        tipoUsuario: +formData.tipo, 
         matricula: formData.matricula,
-        codigoProfessor: formData.codigoRegistro,
+        codigoProfessor: formData.codigoProfessor,
         whiteLabelId: formData.whiteLabelId || 0,
         endereco: {
           cep: formData.cep,
           cidade: formData.cidade,
-          estado: formData.estado,
+          estado: +formData.estado,
           logradouro: formData.logradouro,
           numero: formData.numero,
           complemento: formData.complemento,
@@ -131,4 +135,3 @@ export class CreateEditComponent implements OnInit {
     }
   }
 }
-
