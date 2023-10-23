@@ -3,7 +3,7 @@ import { Avaliacao } from '../../model/avaliacoes.model';
 import { AvaliacoesService } from '../../../services/avaliacaoes.service';
 
 @Component({
-  selector: 'app-create-edit-avaliacao',
+  selector: 'app-create-edit',
   templateUrl: './create-edit.component.html',
   styleUrls: ['./create-edit.component.scss']
 })

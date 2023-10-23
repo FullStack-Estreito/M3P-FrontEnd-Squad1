@@ -11,9 +11,10 @@
 
   <div class="mb-3">
     <label for="loadAlunos" class="form-label">Selecionar Aluno:</label>
-    <select id="loadAlunos" [(ngModel)]="loadAlunos" class="form-control">
+    <select [(ngModel)]="selectedAlunoId"class="form-control">
       <option *ngFor="let aluno of alunos" [value]="aluno.id">{{ aluno.nome }}</option>
-    </select>
+  </select>
+  
   </div>
 
   <form (ngSubmit)="onSave()">
