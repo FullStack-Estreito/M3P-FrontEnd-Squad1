@@ -9,6 +9,7 @@ import { AvaliacoesService } from '../../../services/avaliacaoes.service';
 })
 export class CreateEditComponent implements OnInit {
 
+  selectedAlunoId: number = 0;
   avaliacao: Avaliacao = {
     id: 0,
     titulo: '',
@@ -17,7 +18,8 @@ export class CreateEditComponent implements OnInit {
     pontuacaoMaxima: 0,
     nota: 0,
     dataRealizacao: new Date(),
-    codigoProfessor: 0
+    codigoProfessor: 0,
+    alunoId: 0,
   };
 
   alunos: any[] = [];
@@ -43,12 +45,12 @@ export class CreateEditComponent implements OnInit {
       },
       error => {
         console.error('Erro ao carregar avaliações.', error);
-       
       }
     );
   }
 
   onSave(): void {
+    this.avaliacao.alunoId = this.selectedAlunoId;
     if (this.validateForm(this.avaliacao)) {
       this.avaliacoesService.createAvaliacao(this.avaliacao).subscribe(
         response => {
@@ -61,11 +63,12 @@ export class CreateEditComponent implements OnInit {
         }
       );
     } else {
-      console.error('Formulário de avaliação inválido.');    }
+      console.error('Formulário de avaliação inválido.');
+    }
   }
 
   validateForm(avaliacao: Avaliacao): boolean {
-    return true;
+    return true; 
   }
 }
 

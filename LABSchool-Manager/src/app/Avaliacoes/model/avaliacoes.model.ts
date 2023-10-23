@@ -7,6 +7,7 @@ export interface Avaliacao {
     nota: number;
     dataRealizacao: Date;
     codigoProfessor: number;
+    alunoId: number;
     
 }
 

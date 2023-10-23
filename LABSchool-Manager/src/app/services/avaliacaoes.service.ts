@@ -26,21 +26,21 @@ export class AvaliacoesService {
 
   // Create
   createAvaliacao(avaliacao: Avaliacao): Observable<Avaliacao> {
-    return this.http.post<Avaliacao>(`${this.apiUrl}/avaliacoes`, avaliacao);
+    return this.http.post<Avaliacao>(`${this.apiUrl}/avaliacao`, avaliacao);
   }
 
   // Read
   getAvaliacao(id: number): Observable<Avaliacao> {
-    return this.http.get<Avaliacao>(`${this.apiUrl}/avaliacoes/${id}`);
+    return this.http.get<Avaliacao>(`${this.apiUrl}/avaliacao/${id}`);
   }
 
   getAvaliacoes(): Observable<Avaliacao[]> {
-    return this.http.get<Avaliacao[]>(`${this.apiUrl}/avaliacoes`);
+    return this.http.get<Avaliacao[]>(`${this.apiUrl}/avaliacao`);
   }
 
   // Update
   updateAvaliacao(id: number, avaliacao: Avaliacao): Observable<Avaliacao> {
-    return this.http.put<Avaliacao>(`${this.apiUrl}/avaliacoes/${id}`, avaliacao);
+    return this.http.put<Avaliacao>(`${this.apiUrl}/avaliacao/${id}`, avaliacao);
   }
 
   // Delete
