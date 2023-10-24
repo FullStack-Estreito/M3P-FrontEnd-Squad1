@@ -23,7 +23,6 @@ export interface User {
   whiteLabelId?: number; 
 }
 
-
 export enum TipoGenero {
   Masculino = 0,
   Feminino = 1,
