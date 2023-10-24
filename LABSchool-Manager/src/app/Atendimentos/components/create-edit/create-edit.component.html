@@ -8,13 +8,24 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <div class="card shadow">
-                <div class="card-body">
+                <div class="card-body" style=" background-color: #f5f5f5;">
+                    <img src="../../../assets//img/labScool-logo.png" alt="Logo" 
+                    style="width: 200px; height: 200px; object-fit: cover; 
+                    display: block; margin-left: auto; margin-right: auto;">
                     <h2 class="card-title mb-4 text-center">Cadastro/Edição de Atendimento</h2>
-
+                    <br>
+                    <br>
                     <form (ngSubmit)="saveAtendimento()">
 
                         <section class="mb-4">
                             <h3>Detalhes do Atendimento</h3>
+                            <br>
+                            <div class="mb-3">
+                                <label for="alunoId" class="form-label">Aluno:</label>
+                                <select id="alunoId" [(ngModel)]="atendimento.alunoId" name="alunoId" class="form-control">
+                                    <option *ngFor="let aluno of alunos" [value]="aluno.id">{{ aluno.nome }}</option>
+                                </select>
+                            </div>
 
                             <div class="mb-3">
                                 <label for="dataHora" class="form-label">Data e Hora:</label>
@@ -25,14 +36,6 @@
                                 <label for="descricao" class="form-label">Descrição:</label>
                                 <input type="text" id="descricao" [(ngModel)]="atendimento.descricao" name="descricao" class="form-control">
                             </div>
-
-                            <div class="mb-3">
-                                <label for="alunoId" class="form-label">Aluno:</label>
-                                <select id="alunoId" [(ngModel)]="atendimento.alunoId" name="alunoId" class="form-control">
-                                    <option *ngFor="let aluno of alunos" [value]="aluno.id">{{ aluno.nome }}</option>
-                                </select>
-                            </div>
-
                             <div class="mb-3">
                                 <label for="pedagogoId" class="form-label">Pedagogo:</label>
                                 <select id="pedagogoId" [(ngModel)]="atendimento.pedagogoId" name="pedagogoId" class="form-control">
@@ -43,7 +46,9 @@
                         </section>
 
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary">Salvar Atendimento</button>
+                            <button type="submit" class="btn btn-info mx-2 my-2"><i class="fas fa-save"></i> Salvar</button>
+                            <button type="submit" class="btn btn-danger mx-2 my-2"><i class="fas fa-trash"></i> Deletar</button>
+                            <button type="submit" class="btn btn-warning mx-2 my-2"><i class="fas fa-edit"></i> Editar</button>
                         </div>
                     </form>
                 </div>
