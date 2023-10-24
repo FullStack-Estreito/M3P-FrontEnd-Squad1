@@ -18,10 +18,10 @@ export class DashboardService {
   constructor(private http: HttpClient) { }
 
   getUsuarios(): Observable<User[]> {
-        return this.http.get<User[]>(`${this.apiUrl}/usuario`);
-    }
+    return this.http.get<User[]>(`${this.apiUrl}/usuario`);
+}
 
- getTotalExercicios(): Observable<number> {
+  getTotalExercicios(): Observable<number> {
     return this.http.get<Exercicio[]>(`${this.apiUrl}/exercicio`).pipe(
       map(exercicios => exercicios.length)
     );
@@ -33,6 +33,7 @@ export class DashboardService {
     );
   }
 
+  // Supondo que atendimentos tenham uma estrutura similar
   getTotalAtendimentos(): Observable<number> {
     return this.http.get<any[]>(`${this.apiUrl}/atendimentos`).pipe(
       map(atendimentos => atendimentos.length)

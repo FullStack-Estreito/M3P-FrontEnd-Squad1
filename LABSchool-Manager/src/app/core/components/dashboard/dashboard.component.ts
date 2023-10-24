@@ -24,6 +24,8 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchData(): void {
+    this.dashboardService.getAlunos().subscribe(alunos => this.totalAlunos = alunos.length);
+
     this.dashboardService.getTotalExercicios().subscribe(total => this.totalExercicios = total);
     this.dashboardService.getTotalAvaliacoes().subscribe(total => this.totalAvaliacoes = total);
     this.dashboardService.getTotalAtendimentos().subscribe(total => this.totalAtendimentos = total);
