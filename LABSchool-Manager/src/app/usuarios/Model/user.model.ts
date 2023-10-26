@@ -1,28 +1,3 @@
-export interface User {
-  id?: string;
-  nome: string;
-  genero: TipoGenero;
-  cpf: string;
-  telefone: string;
-  email: string;
-  senha: string;
-  tipoUsuario: TipoUsuario;
-  endereco: {
-      cep: string;
-      cidade: string;
-      estado: TipoEstado;
-      logradouro: string;
-      numero: string;
-      complemento?: string;
-      bairro: string;
-      referencia?: string;
-  };
-  statusAtivo: boolean;
-  matricula?: number | null;
-  codigoProfessor?: number;
-  whiteLabelId?: number; 
-}
-
 export enum TipoGenero {
   Masculino = 0,
   Feminino = 1,
@@ -65,4 +40,42 @@ export enum TipoEstado {
   TO = 26
 }
 
-  
+export interface User {
+  id?: string;
+  nome: string;
+  genero: TipoGenero;
+  cpf: string;
+  telefone: string;
+  email: string;
+  senha: string;
+  tipoUsuario: TipoUsuario;
+  endereco: {
+      cep: string;
+      cidade: string;
+      estado: TipoEstado;
+      logradouro: string;
+      numero: string;
+      complemento?: string;
+      bairro: string;
+      referencia?: string;
+  };
+  statusAtivo: boolean;
+  matricula?: number | null;
+  codigoProfessor?: number;
+  whiteLabelId?: number;
+}
+
+export interface UserForBackend extends Omit<User, 'genero' | 'tipoUsuario' | 'endereco'> {
+  genero: TipoGenero;
+  tipoUsuario: TipoUsuario;
+  endereco: {
+      cep: string;
+      cidade: string;
+      estado: TipoEstado;
+      logradouro: string;
+      numero: string;
+      complemento?: string;
+      bairro: string;
+      referencia?: string;
+  };
+}
