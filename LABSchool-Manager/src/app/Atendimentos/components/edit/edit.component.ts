@@ -10,7 +10,7 @@ import { Atendimento } from '../../model/atendimento.moel';
 })
 export class EditComponent implements OnInit {
 
-  atendimento: any = {};
+  atendimento: any = [];
   alunos: any[] = [];
   pedagogos: any[] = [];
   formInvalid: boolean = false;

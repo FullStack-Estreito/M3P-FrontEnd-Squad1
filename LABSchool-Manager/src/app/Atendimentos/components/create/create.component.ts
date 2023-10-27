@@ -60,8 +60,12 @@ export class CreateComponent implements OnInit {
 
   getCurrentDate(): string {
     const currentDate = new Date();
+    
+    // Ajustar o fuso horário para UTC-3 (como exemplo)
+    currentDate.setHours(currentDate.getHours() - 3);
+
     return currentDate.toISOString().split('T')[0];
-  }
+  }
 
   salvarAtendimento(): void {
     if (this.atendimentoForm.invalid) {
