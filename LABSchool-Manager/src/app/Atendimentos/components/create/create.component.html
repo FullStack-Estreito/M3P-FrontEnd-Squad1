@@ -7,40 +7,40 @@
     <form (ngSubmit)="salvarAtendimento()" [formGroup]="atendimentoForm" class="mt-4">
       <div class="form-group">
         <label for="aluno">Aluno:</label>
-        <select class="form-control" id="aluno" formControlName="aluno"
-          [class.is-invalid]="isFieldInvalid('aluno')" [class.is-valid]="isFieldValid('aluno')">
+        <select class="form-control" id="aluno" formControlName="alunoId"
+          [class.is-invalid]="isFieldInvalid('alunoId')" [class.is-valid]="isFieldValid('alunoId')">
           <option value="" disabled selected>Selecione um aluno</option>
           <option *ngFor="let aluno of alunos" [value]="aluno.id">{{ aluno.nome }}</option>
         </select>
-        <div *ngIf="isFieldInvalid('aluno')" class="invalid-feedback">
+        <div *ngIf="isFieldInvalid('alunoId')" class="invalid-feedback">
           Selecione um aluno
         </div>
       </div>
       <div class="form-group">
         <label for="pedagogo">Pedagogo:</label>
-        <select class="form-control" id="pedagogo" formControlName="pedagogo"
-          [class.is-invalid]="isFieldInvalid('pedagogo')" [class.is-valid]="isFieldValid('pedagogo')">
+        <select class="form-control" id="pedagogo" formControlName="pedagogoId"
+          [class.is-invalid]="isFieldInvalid('pedagogoId')" [class.is-valid]="isFieldValid('pedagogoId')">
           <option value="" disabled selected>Selecione um pedagogo</option>
           <option *ngFor="let pedagogo of pedagogos" [value]="pedagogo.id">{{ pedagogo.nome }}</option>
         </select>
-        <div *ngIf="isFieldInvalid('pedagogo')" class="invalid-feedback">
+        <div *ngIf="isFieldInvalid('pedagogoId')" class="invalid-feedback">
           Selecione um pedagogo
         </div>
       </div>
       <div class="form-group">
         <label for="dataAtendimento">Data:</label>
-        <input type="date" class="form-control" id="dataAtendimento" formControlName="dataAtendimento"
-          [class.is-invalid]="isFieldInvalid('dataAtendimento')" [class.is-valid]="isFieldValid('dataAtendimento')">
-        <div *ngIf="isFieldInvalid('dataAtendimento')" class="invalid-feedback">
+        <input type="date" class="form-control" id="dataAtendimento" formControlName="dataHora"
+          [class.is-invalid]="isFieldInvalid('dataHora')" [class.is-valid]="isFieldValid('dataHora')">
+        <div *ngIf="isFieldInvalid('dataHora')" class="invalid-feedback">
           A data de acompanhamento é obrigatória.
         </div>
       </div>
       <div class="form-group">
         <label for="descricaoAtendimento">Descrição:</label>
-        <input type="text" class="form-control" id="descricaoAtendimento" formControlName="descricaoAtendimento"
-          placeholder="Descrição do atendimento" [class.is-invalid]="isFieldInvalid('descricaoAtendimento')"
-          [class.is-valid]="isFieldValid('descricaoAtendimento')">
-        <div *ngIf="isFieldInvalid('descricaoAtendimento')" class="invalid-feedback">
+        <input type="text" class="form-control" id="descricaoAtendimento" formControlName="descricao"
+          placeholder="Descrição do atendimento" [class.is-invalid]="isFieldInvalid('descricao')"
+          [class.is-valid]="isFieldValid('descricao')">
+        <div *ngIf="isFieldInvalid('descricao')" class="invalid-feedback">
             A descrição do atendimento é obrigatória.
         </div>
       </div>
@@ -57,11 +57,9 @@
       </div>
       
       <div class="my-4">
-        <button type="submit" class="btn btn-info mx-2 my-2"><i class="fas fa-save"></i> Salvar</button>
-        <button routerLink="/atendimentos" class="btn btn-secondary mx-2 my-2"><i class="fas fa-arrow-left"></i>
+        <button type="submit" [disabled]="atendimentoForm.invalid" class="btn btn-info mx-2 my-2"><i class="fas fa-save"></i> Salvar</button>
+        <button routerLink="/atendimentos/list" class="btn btn-secondary mx-2 my-2"><i class="fas fa-arrow-left"></i>
           Voltar para a lista de atendimentos </button>
       </div>
     </form>
 </div>
-  
-  

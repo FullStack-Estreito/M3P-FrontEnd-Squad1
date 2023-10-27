@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Atendimento, TipoUsuario } from '../Atendimentos/model/atendimento.moel';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { User, TipoUsuario } from '../usuarios/Model/user.model'; // Corrigido o caminho do modelo de usuário
+import { Atendimento } from '../Atendimentos/model/atendimento.moel';
 
 @Injectable({
   providedIn: 'root'
@@ -13,23 +14,15 @@ export class AtendimentoService {
 
   constructor(private http: HttpClient) { }
 
-  getAlunos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/usuario`).pipe(
-      map(users => {
-        const alunos = users.filter(user => user.tipoUsuario === TipoUsuario.Aluno);
-        console.log("Alunos filtrados: ", alunos);
-        return alunos;
-      })
+  getAlunos(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/usuario`).pipe(
+      map(users => users.filter(user => user.tipoUsuario === TipoUsuario.Aluno))
     );
   }
   
-  getPedagogos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/usuario`).pipe(
-      map(users => {
-        const pedagogos = users.filter(user => user.tipoUsuario === TipoUsuario.Pedagogo);
-        console.log("Pedagogos filtrados: ", pedagogos);
-        return pedagogos;
-      })
+  getPedagogos(): Observable<User[]> {
+    return this.http.get<User[]>(`${this.apiUrl}/usuario`).pipe(
+      map(users => users.filter(user => user.tipoUsuario === TipoUsuario.Pedagogo))
     );
   }
   
