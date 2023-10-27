@@ -83,6 +83,7 @@ export class CreateComponent implements OnInit {
       () => {
         console.log('Atendimento salvo com sucesso.');
         alert('Atendimento salvo com sucesso.');
+        this.atendimentoForm.reset();
         this.router.navigate(['/atendimentos/list']); 
       },
       (error: any) => {

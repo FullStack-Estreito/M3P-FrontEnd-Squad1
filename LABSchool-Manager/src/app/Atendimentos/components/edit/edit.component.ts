@@ -29,17 +29,16 @@ export class EditComponent implements OnInit {
   }
 
   getAtendimento(id: number): void {
-    this.atendimentoService.getAtendimentos().subscribe(
-      (atendimentos: Atendimento[]) => {
-        const atendimento = atendimentos.find(item => item.id === id);
-        if (atendimentos) {
-          this.atendimento = atendimentos;
+    this.atendimentoService.getAtendimento(id).subscribe(
+      (atendimento: Atendimento) => {
+        if (atendimento) {
+          this.atendimento = atendimento;
         } else {
           console.error('Atendimento não encontrado.');
         }
       },
       (error: any) => {
-        console.error('Erro ao obter os atendimentos', error);
+        console.error('Erro ao obter o atendimento', error);
       }
     );
   }

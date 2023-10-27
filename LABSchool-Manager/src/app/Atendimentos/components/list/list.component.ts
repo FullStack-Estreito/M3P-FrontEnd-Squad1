@@ -1,15 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AtendimentoService } from 'src/app/services/atendimento.service';
+import { map } from 'rxjs/operators';
 import { Atendimento } from '../../model/atendimento.moel';
-import { map } from 'rxjs';
-
-
-// interface Atendimento {
-//   dataHora: string;
-//   descricao: string;
-//   StatusAtivo: boolean;
-// }
-
 
 @Component({
   selector: 'app-list',
@@ -22,11 +14,11 @@ export class ListComponent implements OnInit {
   paginatedAtendimentos: Atendimento[] = [];
   filtroDescricao: string = '';
   currentPage: number = 1;
-  itemsPerPage: number = 9; // Quantidade de items por página que deseja
+  itemsPerPage: number = 9;
   totalItems: number = 0;
   totalPages: number[] = [];
-  loadingError: boolean = false; // Nova propriedade
-  searchError: boolean = false; // Nova propriedade
+  loadingError: boolean = false;
+  searchError: boolean = false;
 
   constructor(private atendimentoService: AtendimentoService) { }
 
@@ -38,13 +30,13 @@ export class ListComponent implements OnInit {
     this.atendimentoService.getAtendimentos().pipe(
       map((atendimentos: Atendimento[]) => {
         if (this.filtroDescricao.trim() === '') {
-          this.searchError = false; // Resetar a mensagem de erro se o filtro estiver vazio
+          this.searchError = false;
           return atendimentos;
         } else {
-          let filtered = atendimentos.filter(acompanhamento =>
-            acompanhamento.descricao.toLowerCase().includes(this.filtroDescricao.trim().toLowerCase())
+          let filtered = atendimentos.filter(atendimento =>
+            atendimento.descricao.toLowerCase().includes(this.filtroDescricao.trim().toLowerCase())
           );
-          this.searchError = filtered.length === 0; // Setar a mensagem de erro se nenhum acompanhamento foi encontrado
+          this.searchError = filtered.length === 0;
           return filtered;
         }
       })
@@ -79,8 +71,7 @@ export class ListComponent implements OnInit {
   }
 
   filtrarAtendimentos() {
-    this.currentPage = 1; // Volta para a primeira página ao aplicar o filtro
+    this.currentPage = 1;
     this.obterAtendimentos();
   }
 }
-

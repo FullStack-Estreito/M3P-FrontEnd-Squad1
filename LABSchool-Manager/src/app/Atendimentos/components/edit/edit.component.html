@@ -2,7 +2,7 @@
 
 <div class="container my-5 d-flex flex-column min-vh-100">
   <h1>Editar Acompanhamento</h1>
-  <form (ngSubmit)="salvarAtendimento()">
+  <form (ngSubmit)="salvarAtendimento()" novalidate>
     <div class="form-group">
       <label for="aluno">Aluno:</label>
       <select class="form-control" id="aluno" [(ngModel)]="atendimento.alunoId" name="aluno" required>
