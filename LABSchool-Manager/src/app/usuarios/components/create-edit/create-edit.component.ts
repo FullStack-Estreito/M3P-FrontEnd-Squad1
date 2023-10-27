@@ -10,6 +10,7 @@ import { User, TipoGenero, TipoUsuario, TipoEstado } from '../../Model/user.mode
 })
 export class CreateEditComponent implements OnInit {
   userForm: FormGroup;
+  isLoading: boolean = false;
 
   // Obtem valores dos enums para preencher as opções dos select no template.
   genders = Object.values(TipoGenero).filter(value => typeof value === 'string');
@@ -22,16 +23,16 @@ export class CreateEditComponent implements OnInit {
   ) {
     this.userForm = this.formBuilder.group({
       nome: ['', Validators.required],
-      genero: ['Masculino', Validators.required],
+      genero: ['', Validators.required],
       cpf: ['', Validators.required],
       telefone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       senha: ['', Validators.required],
-      tipoUsuario: ['Administrador', Validators.required],
+      tipoUsuario: ['', Validators.required],
       endereco: this.formBuilder.group({
         cep: ['', Validators.required],
         cidade: ['', Validators.required],
-        estado: ['AC', Validators.required],
+        estado: ['', Validators.required],
         logradouro: ['', Validators.required],
         numero: ['', Validators.required],
         complemento: [''],
@@ -108,6 +109,7 @@ export class CreateEditComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.isLoading = true
     if (this.userForm.valid) {
       const user: User = this.userForm.value;
 
@@ -137,6 +139,7 @@ export class CreateEditComponent implements OnInit {
         );
       }
     } else {
+      this.isLoading = false;
       console.error('Formulário inválido. Verifique os dados inseridos.');
     }
   }
