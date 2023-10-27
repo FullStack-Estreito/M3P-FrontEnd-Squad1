@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AtendimentoService } from '../../../services/atendimento.service';
-import { Atendimento, TipoUsuario } from '../../model/atendimento.moel';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/usuarios/Model/user.model';
+ // Corrigido o caminho do modelo de usuário
 
 @Component({
   selector: 'app-create',
@@ -13,32 +13,24 @@ import { User } from 'src/app/usuarios/Model/user.model';
 export class CreateComponent implements OnInit {
 
   atendimentoForm: FormGroup;
-  alunos: any[] = [{ id: '', nome: 'Selecione um aluno' }]; // Adicionando a opção "Selecione um aluno."
-  pedagogos: any[] = [{ id: '', nome: 'Selecione um pedagogo' }]; // Adicionando a opção "Selecione um pedagogo."
-  formError: string = ''; // Variable to store the form error message
-
-  // Lógica dropdown do usuario filtrado por pedagogo e aluno
-  // alunos: User[] = [];
-  // pedagogos: User[] = [];
+  alunos: any[] = [{ id: '', nome: 'Selecione um aluno' }];
+  pedagogos: any[] = [{ id: '', nome: 'Selecione um pedagogo' }];
+  formError: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private atendimentoService: AtendimentoService,
     private router: Router
   ) {
-
     this.atendimentoForm = this.formBuilder.group({
-
       alunoId: ['', Validators.required],
       pedagogoId: ['', Validators.required],
       dataHora: [this.getCurrentDate(), Validators.required],
       descricao: ['', Validators.required],
       statusAtivo: [false]
-      
     });
   }
 
-  // Lógica dropdown do usuario filtrado por pedagogo e aluno
   ngOnInit(): void {
     this.getAlunos();
     this.getPedagogos();
