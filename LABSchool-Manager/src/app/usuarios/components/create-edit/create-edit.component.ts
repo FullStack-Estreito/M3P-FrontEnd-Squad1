@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario.service';
 import { User, TipoGenero, TipoUsuario, TipoEstado } from '../../Model/user.model';
+import { ViaCepService } from '../../../services/via-cep.service'; 
 
 @Component({
   selector: 'app-create-edit',
@@ -12,14 +13,14 @@ export class CreateEditComponent implements OnInit {
   userForm: FormGroup;
   isLoading: boolean = false;
 
-  // Obtem valores dos enums para preencher as opções dos select no template.
   genders = Object.values(TipoGenero).filter(value => typeof value === 'string');
   userTypes = Object.values(TipoUsuario).filter(value => typeof value === 'string');
   states = Object.values(TipoEstado).filter(value => typeof value === 'string');
 
   constructor(
     private formBuilder: FormBuilder,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private viaCepService: ViaCepService
   ) {
     this.userForm = this.formBuilder.group({
       nome: ['', Validators.required],
@@ -30,7 +31,7 @@ export class CreateEditComponent implements OnInit {
       senha: ['', Validators.required],
       tipoUsuario: ['', Validators.required],
       endereco: this.formBuilder.group({
-        cep: ['', Validators.required],
+        cep: ['', [Validators.required, CreateEditComponent.cepFormatValidator()]],
         cidade: ['', Validators.required],
         estado: ['', Validators.required],
         logradouro: ['', Validators.required],
@@ -46,31 +47,84 @@ export class CreateEditComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userForm?.get('endereco.cep')?.valueChanges.subscribe(cep => {
+      if (cep && /^[0-9]{5}-[0-9]{3}$/.test(cep)) {
+        this.viaCepService.getEnderecoByCep(cep).subscribe(data => {
+          if (data && !data.erro) {
+            this.userForm?.get('endereco')?.get('logradouro')?.setValue(data.logradouro);
+            this.userForm?.get('endereco')?.get('bairro')?.setValue(data.bairro);
+            this.userForm?.get('endereco')?.get('cidade')?.setValue(data.localidade);
+            this.userForm?.get('endereco')?.get('estado')?.setValue(data.uf);
+          } else {
+            console.error('CEP não encontrado');
+            this.userForm?.get('endereco.cep')?.setErrors({'cepNotFound': true});
+          }
+        },
+        error => {
+          console.error('Erro ao buscar CEP.', error);
+          this.userForm?.get('endereco.cep')?.setErrors({'cepServiceError': true});
+        });
+      } else if (cep && cep.length >= 8) {
+        this.userForm?.get('endereco.cep')?.setErrors({'invalidCep': true});
+      }
+    });
+  }
+
+  onSubmit(): void {
+    if (this.userForm?.valid) {
+      const user: User = this.userForm?.value;
+      user.genero = this.stringToTipoGenero(user.genero as unknown as string);
+      user.tipoUsuario = this.stringToTipoUsuario(user.tipoUsuario as unknown as string);
+      user.endereco.estado = this.stringToTipoEstado(user.endereco.estado as unknown as string);
+
+      if (user.id) {
+        this.usuarioService.updateUser(user.id, user).subscribe(
+          response => {
+            console.log('Usuário atualizado com sucesso!', response);
+          },
+          error => {
+            console.error('Erro ao atualizar o usuário.', error);
+          }
+        );
+      } else {
+        this.usuarioService.createUser(user).subscribe(
+          response => {
+            console.log('Usuário criado com sucesso!', response);
+          },
+          error => {
+            console.error('Erro ao criar o usuário.', error);
+          }
+        );
+      }
+    } else {
+      console.error('Formulário inválido. Verifique os dados inseridos.');
+    }
+  }
 
   stringToTipoGenero(value: string): TipoGenero {
     switch (value) {
-        case "Masculino":
-            return TipoGenero.Masculino;
-        case "Feminino":
-            return TipoGenero.Feminino;
-        default:
-            throw new Error('Genero inválido: ' + value);
+      case "Masculino":
+          return TipoGenero.Masculino;
+      case "Feminino":
+          return TipoGenero.Feminino;
+      default:
+          throw new Error('Genero inválido: ' + value);
     }
   }
-  // Converte string que representa um gênero para valor enum correspondente.
+
   stringToTipoUsuario(value: string): TipoUsuario {
     switch (value) {
-        case "Administrador":
-            return TipoUsuario.Administrador;
-        case "Pedagogo":
-            return TipoUsuario.Pedagogo;
-        case "Professor":
-            return TipoUsuario.Professor;
-        case "Aluno":
-            return TipoUsuario.Aluno;
-        default:
-            throw new Error('Tipo de usuário inválido: ' + value);
+      case "Administrador":
+          return TipoUsuario.Administrador;
+      case "Pedagogo":
+          return TipoUsuario.Pedagogo;
+      case "Professor":
+          return TipoUsuario.Professor;
+      case "Aluno":
+          return TipoUsuario.Aluno;
+      default:
+          throw new Error('Tipo de usuário inválido: ' + value);
     }
   }
 
@@ -108,39 +162,10 @@ export class CreateEditComponent implements OnInit {
     }
   }
 
-  onSubmit(): void {
-    this.isLoading = true
-    if (this.userForm.valid) {
-      const user: User = this.userForm.value;
-
-      // funções de conversão
-      user.genero = this.stringToTipoGenero(user.genero as unknown as string);
-      user.tipoUsuario = this.stringToTipoUsuario(user.tipoUsuario as unknown as string);
-      user.endereco.estado = this.stringToTipoEstado(user.endereco.estado as unknown as string);
-
-      // Lógica para chamar o serviço e criar ou atualizar o usuário
-      if (user.id) {
-        this.usuarioService.updateUser(user.id, user).subscribe(
-          response => {
-            console.log('Usuário atualizado com sucesso!', response);
-          },
-          error => {
-            console.error('Erro ao atualizar o usuário.', error);
-          }
-        );
-      } else {
-        this.usuarioService.createUser(user).subscribe(
-          response => {
-            console.log('Usuário criado com sucesso!', response);
-          },
-          error => {
-            console.error('Erro ao criar o usuário.', error);
-          }
-        );
-      }
-    } else {
-      this.isLoading = false;
-      console.error('Formulário inválido. Verifique os dados inseridos.');
-    }
+  static cepFormatValidator(): ValidatorFn {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const isValid = /^[0-9]{5}-[0-9]{3}$/.test(control.value);
+      return !isValid ? {'invalidCep': {value: control.value}} : null;
+    };
   }
 }
