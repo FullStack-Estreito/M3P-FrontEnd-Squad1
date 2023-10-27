@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'atendimentos/list', component: AtendimentoListComponent },
   { path: 'atendimentos/create', component: AtendimentoCreateComponent },
-  { path: 'atendimentos/edit', component: AtendimentoEditComponent },
+  { path: 'atendimentos/edit/:id', component: AtendimentoEditComponent },
   { path: 'avaliacoes/edit', component: AvaliacoesCreateEdit },
   { path: 'exercicios/edit', component: ExercicioCreateEdit },
   { path: 'usuarios', component: ListComponent },
