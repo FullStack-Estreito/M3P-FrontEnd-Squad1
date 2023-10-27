@@ -72,8 +72,8 @@ export class CreateComponent implements OnInit {
     this.formError = ''; // Reset the form error message before saving
 
     const atendimento = {
-      dataHora: this.atendimentoForm.get('dataAtendimento')?.value,
-      descricao: this.atendimentoForm.get('descricaoAtendimento')?.value,
+      dataHora: this.atendimentoForm.get('dataHora')?.value,
+      descricao: this.atendimentoForm.get('descricao')?.value,
       statusAtivo: this.atendimentoForm.get('statusAtivo')?.value,
       alunoId: this.atendimentoForm.get('alunoId')?.value,
       pedagogoId: this.atendimentoForm.get('pedagogoId')?.value
