@@ -5,6 +5,7 @@ import { ListComponent } from './components/list/list.component';
 import { DetailsComponent } from './components/details/details.component';
 import { CoreModule } from "../core/core.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         CoreModule,
         FormsModule,
         ReactiveFormsModule,
+        HttpClientModule,
     ],
     
 })
