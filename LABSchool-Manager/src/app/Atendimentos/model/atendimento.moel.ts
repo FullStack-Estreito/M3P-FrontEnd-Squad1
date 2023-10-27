@@ -6,7 +6,6 @@ export interface Atendimento {
     alunoId: number;
     pedagogoId: number;
   }
-  
   export enum TipoUsuario {
     Administrador = 0,
     Pedagogo = 1,
