@@ -15,7 +15,7 @@ export class UsuarioService {
     return this.http.post<User>(this.baseUrl, user);
   }
 
-  updateUser(userId: string, user: User): Observable<User> {
+  updateUser(userId: number, user: User): Observable<User> {
     return this.http.put<User>(`${this.baseUrl}/${userId}`, user);
   }
 
