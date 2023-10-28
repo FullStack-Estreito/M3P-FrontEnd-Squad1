@@ -43,7 +43,7 @@ export class CreateEditComponent implements OnInit {
       statusAtivo: [true, Validators.required],
       matricula: [null],
       codigoProfessor: [null],
-      whiteLabelId: [null]
+      whiteLabelId: [true, Validators.required]
     });
   }
 
@@ -57,16 +57,20 @@ export class CreateEditComponent implements OnInit {
             this.userForm?.get('endereco')?.get('cidade')?.setValue(data.localidade);
             this.userForm?.get('endereco')?.get('estado')?.setValue(data.uf);
           } else {
+            alert('Cep não encontrado')
             console.error('CEP não encontrado');
             this.userForm?.get('endereco.cep')?.setErrors({'cepNotFound': true});
           }
         },
         error => {
+          alert('Erro ao buscar CEP')
           console.error('Erro ao buscar CEP.', error);
           this.userForm?.get('endereco.cep')?.setErrors({'cepServiceError': true});
         });
       } else if (cep && cep.length >= 8) {
+        
         this.userForm?.get('endereco.cep')?.setErrors({'invalidCep': true});
+        
       }
     });
   }
@@ -77,30 +81,45 @@ export class CreateEditComponent implements OnInit {
       user.genero = this.stringToTipoGenero(user.genero as unknown as string);
       user.tipoUsuario = this.stringToTipoUsuario(user.tipoUsuario as unknown as string);
       user.endereco.estado = this.stringToTipoEstado(user.endereco.estado as unknown as string);
-
+      
       if (user.id) {
         this.usuarioService.updateUser(user.id, user).subscribe(
           response => {
             console.log('Usuário atualizado com sucesso!', response);
+            
           },
           error => {
             console.error('Erro ao atualizar o usuário.', error);
           }
+          
         );
       } else {
         this.usuarioService.createUser(user).subscribe(
           response => {
+            alert('Usuário criado com sucesso!')
             console.log('Usuário criado com sucesso!', response);
+
+            this.userForm.reset();
+            Object.keys(this.userForm.controls).forEach((key) => {
+              this.userForm.get(key)?.setErrors(null);
+            });
           },
+          
           error => {
+            alert('Erro ao criar o usuário.')
             console.error('Erro ao criar o usuário.', error);
+            
           }
         );
       }
     } else {
+      
       console.error('Formulário inválido. Verifique os dados inseridos.');
     }
+    
   }
+
+  
 
   stringToTipoGenero(value: string): TipoGenero {
     switch (value) {
@@ -170,5 +189,15 @@ export class CreateEditComponent implements OnInit {
   }
   validateErrorMessage(field: string) {
     return this.userForm.get(field)?.invalid && this.userForm.get(field)?.touched;
+  }
+  isFieldInvalid(field: string): boolean {
+    const formControl = this.userForm.get(field);
+    return formControl ? formControl.invalid && (formControl.dirty || formControl.touched) : false;
+  }
+
+  // Implementação da função para verificar se um campo está válido
+  isFieldValid(field: string): boolean {
+    const formControl = this.userForm.get(field);
+    return formControl ? formControl.valid && (formControl.dirty || formControl.touched) : false;
   }
 }
