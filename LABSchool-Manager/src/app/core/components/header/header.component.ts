@@ -1,23 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   currentUser: string | null = null;
   isLoading: boolean = false;
   previousUrl: string | null = null;
+  private unsubscribe$ = new Subject<void>();
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.authService.currentUser.subscribe(x => this.currentUser = x);
-    // Subscribe ao evento de navegação para ativar/desativar o loading
-    this.router.events.subscribe(event => {
+    this.authService.currentUser.pipe(takeUntil(this.unsubscribe$)).subscribe(user => {
+      this.currentUser = user ? user.nome : null; // Alterado para 'nome'
+    });
+
+    this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
       if (event instanceof NavigationStart) {
         this.isLoading = true;
       } else if (event instanceof NavigationEnd) {
@@ -28,18 +33,21 @@ export class HeaderComponent implements OnInit {
       }
     });
   }
+
+  ngOnDestroy(): void {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
+  }
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-  // Método para lidar com a navegação manual
+
   navigateTo(route: string) {
-    // Verifique se a rota é a mesma que a atual antes de ativar o spinner
     if (this.router.url !== route) {
       this.isLoading = true;
     }
-    // Usamos setTimeout para garantir que o spinner seja exibido
-    // mesmo em navegações rápidas dentro da mesma página
     setTimeout(() => {
       this.router.navigate([route]);
     }, 0);

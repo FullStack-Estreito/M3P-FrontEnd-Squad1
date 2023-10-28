@@ -21,11 +21,9 @@ export class AuthService {
     return this.http.post<any>(`${this.API_URL}/login`, { Email: username, password })
       .pipe(
         map(response => {
-          console.log('Resposta recebida do servidor:', response); // Log 2
-
           if (response && response.token) {
             const user = {
-              username: response.username, 
+              nome: response.nome, // Alterado para 'nome'
               token: response.token
             };
             localStorage.setItem('currentUser', JSON.stringify(user));
@@ -34,8 +32,8 @@ export class AuthService {
           }
           return false;
         }),
-        catchError((error) => { // Captura o erro
-          console.error('Erro ao tentar fazer login:', error); // Log 3
+        catchError((error) => {
+          console.error('Erro ao tentar fazer login:', error);
           return throwError('Credenciais inválidas. Por favor, tente novamente.');
         })
       );
