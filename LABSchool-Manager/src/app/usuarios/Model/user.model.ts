@@ -41,7 +41,7 @@ export enum TipoEstado {
 }
 
 export interface User {
-  id?: string;
+  id?: number;
   nome: string;
   genero: TipoGenero;
   cpf: string;

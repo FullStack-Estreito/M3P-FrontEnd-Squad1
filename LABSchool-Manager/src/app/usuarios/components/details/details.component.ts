@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AlunoService } from '../../../services/aluno.service';
 import { TipoUsuario, User } from '../../Model/user.model';
 import { Atendimento } from '../../../Atendimentos/model/atendimento.moel';
 import { Avaliacao } from '../../../Avaliacoes/model/avaliacoes.model';
 import { Exercicio } from '../../../exercicios/model/exercicios.model';
-import { ChangeDetectorRef } from '@angular/core';
+import { Endereco } from './endereco.model';
 
 @Component({
   selector: 'app-details',
@@ -12,7 +12,7 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-
+  endereco: Endereco | null = null; // corrigido para ser um único Endereco
   alunos: User[] = [];
   atendimentos: Atendimento[] = [];
   avaliacoes: Avaliacao[] = [];
@@ -33,40 +33,39 @@ export class DetailsComponent implements OnInit {
   }
 
   onAlunoChanged(event: Event): void {
-    const target = event.target as HTMLInputElement; // Cast para um tipo específico
-    
+    const target = event.target as HTMLInputElement;
+
     if (!target.value) {
       console.error('O valor do evento é indefinido:', target.value);
       return;
     }
-  
-    // Convertendo o valor para um número
-    const alunoId = Number(target.value); 
-    
+
+    const alunoId = Number(target.value);
+
     if (isNaN(alunoId)) {
       console.error('O valor do evento não é um número válido:', target.value);
       return;
     }
-  
-    console.log("Value from event:", alunoId); // Log o valor convertido para garantir que é um número
-    
+
+    console.log("Value from event:", alunoId);
+
     this.alunoSelecionado = this.alunos.find(a => a.id === alunoId) || null;
-    
+
     console.log("Aluno Selecionado:", this.alunoSelecionado);
-    
+
     if (this.alunoSelecionado) {
       this.fetchAtendimentosByAlunoId(alunoId);
       this.fetchAvaliacoesByAlunoId(alunoId);
       this.fetchExerciciosByAlunoId(alunoId);
+      this.fetchEnderecoByAlunoId(alunoId);
     } else {
       this.atendimentos = [];
       this.avaliacoes = [];
       this.exercicios = [];
+      this.endereco = null;
     }
     this.cdr.detectChanges();
   }
-  
-  
 
   fetchAtendimentosByAlunoId(id: number): void {
     this.alunoService.getAtendimentosByAlunoId(id).subscribe(atendimentos => {
@@ -88,5 +87,15 @@ export class DetailsComponent implements OnInit {
       console.log("Exercícios for alunoId:", id, exercicios);
     });
   }
+
+  fetchEnderecoByAlunoId(id: number): void {
+    this.alunoService.getEnderecoByAlunoId(id).subscribe(enderecos => {
+      this.endereco = enderecos[0];
+      console.log("Endereço for alunoId:", id, this.endereco);
+    }, error => {
+      console.error('Erro ao buscar endereços:', error);
+    });
+  }
 }
+
 
