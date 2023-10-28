@@ -7,64 +7,58 @@
 
     <div class="form-group">
         <label for="Aluno">Aluno:</label>
-        <select class="form-control" id="aluno" formControlName="aluno">
-          <option value=""></option>
-          <option value="1"></option>
-          <option value="2"></option>
-          <option value="3"></option>
+        <select class="form-control" id="aluno" (change)="onAlunoChanged($event)">
+          <option value="" disabled selected>Selecione um aluno</option>
+          <option *ngFor="let aluno of alunos" [value]="aluno.id">{{ aluno.nome }}</option>
         </select>
-      </div><br><br>
+    </div>
     
-    <div class="card mb-4">
+    
+    <div class="card mb-4" *ngIf="alunoSelecionado">
         <div class="card-header">
             Informações do Aluno
         </div>
         <div class="card-body">
-            <p><strong>Nome Completo:</strong> [Nome do Aluno]</p>
-            <p><strong>Gênero:</strong> [Gênero do Aluno]</p>
-            <p><strong>CPF:</strong> [CPF do Aluno]</p>
-            <p><strong>Telefone:</strong> [Telefone do Aluno]</p>
-            <p><strong>E-mail:</strong> [E-mail do Aluno]</p>
-            <p><strong>Tipo:</strong> [Tipo do Usuário]</p>
-            <p><strong>Endereço:</strong> CEP: [CEP], Cidade: [Cidade], Estado: [Estado], Logradouro: [Logradouro], Número: [Número], Complemento: [Complemento], Bairro: [Bairro], Ponto de Referência: [Ponto de Referência]</p>
-            <p><strong>Status do Sistema:</strong> Ativo</p>
-            <p><strong>Matrícula:</strong> [Matrícula do Aluno]</p>
+            <p><strong>Nome Completo:</strong> {{ alunoSelecionado.nome }}</p>
+            <!-- Outras informações do aluno vão aqui. Ajuste de acordo com as propriedades disponíveis em seu modelo de 'User' -->
         </div>
     </div>
-
-    <div class="card mb-4">
+    
+    <div class="card mb-4" *ngIf="alunoSelecionado && atendimentos.length">
         <div class="card-header">
             Histórico de Atendimentos
         </div>
         <div class="card-body">
             <ul>
-                <li>Atendimento em [data] - [detalhes]</li>
+                <li *ngFor="let atendimento of atendimentos">{{ atendimento.dataHora }} - {{ atendimento.descricao }}</li>
             </ul>
         </div>
     </div>
+    
 
   
-    <div class="card mb-4">
+    <div class="card mb-4" *ngIf="alunoSelecionado && exercicios.length">
         <div class="card-header">
             Exercícios
         </div>
         <div class="card-body">
             <ul>
-                <li>Exercício de [matéria] em [data] - [detalhes]</li>
+                <li *ngFor="let exercicio of exercicios">{{ exercicio.materia }} em {{ exercicio.dataConclusao }} - {{ exercicio.titulo }}</li>
             </ul>
         </div>
     </div>
-
-    <div class="card mb-4">
+    
+    <div class="card mb-4" *ngIf="alunoSelecionado && avaliacoes.length">
         <div class="card-header">
             Avaliações
         </div>
         <div class="card-body">
             <ul>
-                <li>Avaliação de [matéria] em [data] - Nota: [nota]</li>
+                <li *ngFor="let avaliacao of avaliacoes">{{ avaliacao.materia }} em {{ avaliacao.dataRealizacao }} - Nota: {{ avaliacao.nota }}</li>
             </ul>
         </div>
     </div>
+    
 
     <div class="d-flex justify-content-end">
         <button type="button" class="btn btn-warning">Editar Histórico</button>
