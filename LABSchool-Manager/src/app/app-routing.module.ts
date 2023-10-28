@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'atendimentos/create', component: AtendimentoCreateComponent },
   { path: 'atendimentos/edit/:id', component: AtendimentoEditComponent },
   { path: 'avaliacoes/list', component: AvaliacaoListComponent },
-  { path: 'avaliacoes/create/', component: AvaliacaoCreateComponent },
+  { path: 'avaliacoes/create', component: AvaliacaoCreateComponent },
   { path: 'avaliacoes/edit/:id', component: AvaliacaoEditComponent },
   { path: 'exercicios/edit', component: ExercicioCreateEdit },
   { path: 'usuarios', component: ListComponent },
