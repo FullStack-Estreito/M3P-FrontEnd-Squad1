@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WhiteLabelModule } from './white-label/white-label.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { AtendimentosModule } from './Atendimentos/atendimentos.module';
 import { LogsModule } from './logs/logs.module';
 import { ExerciciosModule } from './exercicios/exercicios.module';
 import { AvaliacoesModule } from './Avaliacoes/avaliacoes.module';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -31,10 +32,15 @@ import { AvaliacoesModule } from './Avaliacoes/avaliacoes.module';
     AtendimentosModule,
     LogsModule,
     ExerciciosModule,
-    AvaliacoesModule
+    AvaliacoesModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+    ReactiveFormsModule
+    
+
     
   ],
-  providers: [],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

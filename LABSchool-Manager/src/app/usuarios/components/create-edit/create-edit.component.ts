@@ -23,7 +23,7 @@ export class CreateEditComponent implements OnInit {
     private viaCepService: ViaCepService
   ) {
     this.userForm = this.formBuilder.group({
-      nome: ['', Validators.required],
+      nome: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(64)]],
       genero: ['', Validators.required],
       cpf: ['', Validators.required],
       telefone: ['', Validators.required],
@@ -167,5 +167,8 @@ export class CreateEditComponent implements OnInit {
       const isValid = /^[0-9]{5}-[0-9]{3}$/.test(control.value);
       return !isValid ? {'invalidCep': {value: control.value}} : null;
     };
+  }
+  validateErrorMessage(field: string) {
+    return this.userForm.get(field)?.invalid && this.userForm.get(field)?.touched;
   }
 }
