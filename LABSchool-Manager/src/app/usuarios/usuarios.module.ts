@@ -6,6 +6,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { CoreModule } from "../core/core.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 
 
@@ -21,6 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
+        NgxMaskDirective,
+        NgxMaskPipe
+        
+        
     ],
     
 })
