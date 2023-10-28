@@ -3,7 +3,7 @@
 <br><br><br>
 <div class="container my-5 flex-column min-vh-100">
   <h1>Listagem de Avaliações</h1>
-  <button class="btn btn-info my-2" [routerLink]="['/atendimentos/create']"> <i class="fas fa-plus"></i> Cadastrar nova avaliação</button>
+  <button class="btn btn-info my-2" [routerLink]="['/avaliacoes/create']"> <i class="fas fa-plus"></i> Cadastrar nova avaliação</button>
   <input type="text" class="form-control mb-4" placeholder="Filtro pelo título da avaliação" [(ngModel)]="filtroTitulo" (input)="filtrarAvaliacoes()">
   
   <div *ngIf="loadingError" class="alert alert-danger mt-4">
@@ -23,7 +23,7 @@
           <p class="card-text"><i class="fas fa-file-alt"></i> {{avaliacao.descricao}}</p>
           <p class="card-text"> <i class="fas fa-user-graduate"></i> {{avaliacao.alunoId}}</p>
           <p class="card-text"><i class="fas fa-chalkboard-teacher"></i> {{avaliacao.codigoProfessor}}</p>
-          <button class="btn btn-secondary" [routerLink]="['/atendimentos/edit/'+ avaliacao.id]"><i class="fas fa-pencil-alt"></i> Editar</button>
+          <button class="btn btn-secondary" [routerLink]="['/avaliacoes/edit/'+ avaliacao.id]"><i class="fas fa-pencil-alt"></i> Editar</button>
         </div>
       </div>
     </div>

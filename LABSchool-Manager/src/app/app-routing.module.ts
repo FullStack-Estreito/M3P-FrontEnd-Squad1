@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListComponent as AtendimentoListComponent} from './Atendimentos/components/list/list.component';
 import { CreateComponent as AtendimentoCreateComponent } from './Atendimentos/components/create/create.component';
 import { EditComponent as AtendimentoEditComponent } from './Atendimentos/components/edit/edit.component';
+import { ListComponent as AvaliacaoListComponent } from './Avaliacoes/components/list/list.component';
 import { CreateComponent as AvaliacaoCreateComponent } from './Avaliacoes/components/create/create.component';
+import { EditComponent as AvaliacaoEditComponent } from './Avaliacoes/components/edit/edit.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { ResetPasswordComponent } from './auth/components/reset-password/reset-password.component';
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
@@ -22,7 +24,9 @@ const routes: Routes = [
   { path: 'atendimentos/list', component: AtendimentoListComponent },
   { path: 'atendimentos/create', component: AtendimentoCreateComponent },
   { path: 'atendimentos/edit/:id', component: AtendimentoEditComponent },
+  { path: 'avaliacoes/list', component: AvaliacaoListComponent },
   { path: 'avaliacoes/create/', component: AvaliacaoCreateComponent },
+  { path: 'avaliacoes/edit/:id', component: AvaliacaoEditComponent },
   { path: 'exercicios/edit', component: ExercicioCreateEdit },
   { path: 'usuarios', component: ListComponent },
   { path: 'usuarios/details', component: DetailsComponent },
