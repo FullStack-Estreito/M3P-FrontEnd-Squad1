@@ -42,7 +42,7 @@
       <button type="button" class="btn btn-danger mx-2 my-2" (click)="deletarAtendimento()"><i class="fas fa-trash"></i>
         Deletar
       </button>
-      <button routerLink="/atendimentos/list" class="btn btn-secondary mx-y my-2"><i class="fas fa-arrow-left"></i>
+      <button [routerLink]="['/atendimentos/list']" class="btn btn-secondary mx-y my-2"><i class="fas fa-arrow-left"></i>
         Voltar para a lista de acompanhamentos
       </button>
     </div>

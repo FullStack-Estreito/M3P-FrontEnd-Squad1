@@ -39,7 +39,7 @@ export class EditComponent implements OnInit {
     this.atendimentoForm = this.fb.group({
         alunoId: [null, Validators.required],
         pedagogoId: [null, Validators.required],
-        dataHora: ['', Validators.required],
+        dataHora: '',
         descricao: ['', Validators.required],
         statusAtivo: [false]
     });
