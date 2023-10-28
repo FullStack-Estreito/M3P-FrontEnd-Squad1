@@ -1,11 +1,11 @@
 export interface Avaliacao {
-    id: number;
+    id?: number;
     titulo: string;
     descricao: string;
     materia: string;
     pontuacaoMaxima: number;
     nota: number;
-    dataRealizacao: Date;
+    dataRealizacao: string;
     codigoProfessor: number;
     alunoId: number;
     

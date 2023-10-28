@@ -24,6 +24,17 @@ export class AvaliacoesService {
     );
   }
 
+  // Método para obter professores
+  getProfessores(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/usuario`).pipe(
+      map(users => {
+        const professores = users.filter(user => user.tipoUsuario === TipoUsuario.Professor);
+        console.log("Professores filtrados: ", professores);
+        return professores;
+      })
+    );
+  }
+
   // Create
   createAvaliacao(avaliacao: Avaliacao): Observable<Avaliacao> {
     return this.http.post<Avaliacao>(`${this.apiUrl}/avaliacao`, avaliacao);
@@ -45,6 +56,6 @@ export class AvaliacoesService {
 
   // Delete
   deleteAvaliacao(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/avaliacoes/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/avaliacao/${id}`);
   }
 }
