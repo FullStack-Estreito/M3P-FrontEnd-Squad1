@@ -39,18 +39,18 @@
         <label for="titulo">Título:</label>
         <input type="text" class="form-control" id="titulo" formControlName="titulo"
           placeholder="Título" [class.is-invalid]="isFieldInvalid('titulo')"
-          [class.is-valid]="isFieldValid('titulo')">
+          [class.is-valid]="isFieldValid('titulo')" minlength="8" maxlength="64">
         <div *ngIf="isFieldInvalid('titulo')" class="invalid-feedback">
-            O título da avaliação é obrigatório.
+            O título da avaliação é obrigatório, o titulo deve ter no mínimo 8 caracteres.
         </div>
       </div>
       <div class="form-group">
         <label for="descricaoAvaliacao">Descrição:</label>
         <input type="text" class="form-control" id="descricaoAvaliacao" formControlName="descricao"
           placeholder="Descrição da avaliação" [class.is-invalid]="isFieldInvalid('descricao')"
-          [class.is-valid]="isFieldValid('descricao')">
-        <div *ngIf="isFieldInvalid('descricao')" class="invalid-feedback">
-            A descrição da avaliação é obrigatória.
+          [class.is-valid]="isFieldValid('descricao')" minlength="15" maxlength="255">
+        <div *ngIf="isFieldInvalid('descricao')" class="invalid-feedback" >
+            A descrição da avaliação é obrigatória, a descrição deve ter no mínimo 15 caracteres.
         </div>
       </div>
       <div class="form-group">
