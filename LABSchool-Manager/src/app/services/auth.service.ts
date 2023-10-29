@@ -47,4 +47,22 @@ export class AuthService {
   isLoggedIn(): boolean {
     return !!localStorage.getItem('currentUser');
   }
+
+  resetPassword(email: string, currentPassword: string, newPassword: string): Observable<any> {
+    const requestBody = {
+        email,
+        currentPassword,
+        newPassword
+    };
+
+    return this.http.put<string>(`${this.API_URL}/changepassword`, requestBody, { responseType: 'text' as 'json' })
+      .pipe(
+        catchError((error) => {
+          console.error('Erro ao tentar redefinir senha:', error);
+          return throwError('Não foi possível redefinir a senha. Por favor, tente novamente.');
+        })
+      );
+}
+
+
 }
