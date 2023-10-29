@@ -17,6 +17,11 @@ export class LoginComponent {
     private router: Router
   ) {}
 
+  showAlert() {
+    alert('Por favor, entre em contato com um administrador do sistema para criar uma conta.');
+}
+
+
   login(): void {
     console.log('Tentativa de login iniciada com', this.email); // Log 1
 
