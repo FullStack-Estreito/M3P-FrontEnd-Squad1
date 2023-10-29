@@ -3,8 +3,9 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent, UserTypePipe } from './components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,10 +14,17 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserTypePipe
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule
+   
+    
+
   ],
   exports: [
     HeaderComponent,
