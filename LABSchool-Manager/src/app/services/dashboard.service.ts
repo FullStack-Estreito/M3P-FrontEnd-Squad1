@@ -39,6 +39,9 @@ export class DashboardService {
       map(atendimentos => atendimentos.length)
     );
   }
+  getAtendimentos(): Observable<Atendimento[]> {
+    return this.http.get<Atendimento[]>(`${this.apiUrl}/atendimentos`);
+  }
 
   getAlunos(): Observable<User[]> {
     return this.http.get<User[]>(`${this.apiUrl}/usuario`).pipe(
