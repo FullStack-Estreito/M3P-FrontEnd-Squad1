@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CreateEditComponent } from './components/create-edit/create-edit.component';
-import { ListComponent } from './components/list/list.component';
+
 import { DetailsComponent } from './components/details/details.component';
 import { CoreModule } from "../core/core.module";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,6 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 @NgModule({
     declarations: [
         CreateEditComponent,
-        ListComponent,
         DetailsComponent
     ],
     imports: [
@@ -23,7 +22,8 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
         ReactiveFormsModule,
         HttpClientModule,
         NgxMaskDirective,
-        NgxMaskPipe
+        NgxMaskPipe,
+      
         
         
     ],

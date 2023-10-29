@@ -5,6 +5,7 @@ import { Atendimento } from '../../../Atendimentos/model/atendimento.moel';
 import { Avaliacao } from '../../../Avaliacoes/model/avaliacoes.model';
 import { Exercicio } from '../../../exercicios/model/exercicios.model';
 import { Endereco } from './endereco.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-details',
@@ -18,12 +19,38 @@ export class DetailsComponent implements OnInit {
   avaliacoes: Avaliacao[] = [];
   exercicios: Exercicio[] = [];
   alunoSelecionado: User | null = null;
+  aluno?: User;
 
-  constructor(private alunoService: AlunoService, private cdr: ChangeDetectorRef) { }
+  constructor(private alunoService: AlunoService, private cdr: ChangeDetectorRef,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.fetchAlunos();
+    this.route.params.subscribe((params) => {
+      const alunoId = +params['id'];
+      this.getAlunoId(alunoId);
+    });
   }
+  
+  getAlunoId(alunoId: number): void {
+    this.alunoService.getAlunoById(alunoId).subscribe((aluno) => {
+      if (aluno) {
+        this.aluno = aluno;
+        if (aluno.id) {
+          this.fetchAtendimentosByAlunoId(aluno.id);
+          this.fetchAvaliacoesByAlunoId(aluno.id);
+          this.fetchExerciciosByAlunoId(aluno.id);
+          this.fetchEnderecoByAlunoId(aluno.id);
+        } else {
+          // Lida com o caso em que o ID do aluno é indefinido
+        }
+      } else {
+        // Lida com o caso em que o aluno não foi encontrado
+        this.aluno = undefined; // Defina como undefined para evitar erros de tempo de execução
+      }
+    });
+}
+
+
 
   fetchAlunos(): void {
     this.alunoService.getAlunos().subscribe(alunos => {
