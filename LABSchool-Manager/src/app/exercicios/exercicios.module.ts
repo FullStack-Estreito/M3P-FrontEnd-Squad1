@@ -1,14 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CreateEditComponent } from './components/create-edit/create-edit.component';
 import { CoreModule } from '../core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ListComponent } from './components/list/list.component';
+import { CreateComponent } from './components/create/create.component';
+import { EditComponent } from './components/edit/edit.component';
 
 
 
 @NgModule({
   declarations: [
-    CreateEditComponent
+    ListComponent,
+    CreateComponent,
+    EditComponent
   ],
   imports: [
     CommonModule,

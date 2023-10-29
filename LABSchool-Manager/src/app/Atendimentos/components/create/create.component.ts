@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
       alunoId: ['', Validators.required],
       pedagogoId: ['', Validators.required],
       dataHora: [this.getCurrentDate(), Validators.required],
-      descricao: ['', Validators.required],
+      descricao: ['', Validators.required, Validators.minLength(8), Validators.maxLength(64)],
       statusAtivo: [false]
     });
   }

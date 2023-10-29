@@ -1,11 +1,11 @@
 export interface Exercicio {
-    id: number;
+    id?: number;
     titulo: string;
     descricao: string;
     materia: string;
     codigoProfessor: number;
     alunoId: number;
-    dataConclusao: Date;
+    dataConclusao: string;
 }
 
 export enum TipoUsuario {
