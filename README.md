@@ -35,7 +35,6 @@ Frontend da LABSchool-Manager, uma aplicação Angular integrada com a API RESTf
 
 - **/src/app**: Contém os componentes, serviços e modelos da aplicação.
 - **/src/assets**: Recursos estáticos como imagens e estilos.
-- **/src/routes**: Definição das rotas da aplicação.
 
 ---
 
