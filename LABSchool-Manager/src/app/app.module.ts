@@ -14,6 +14,7 @@ import { LogsModule } from './logs/logs.module';
 import { ExerciciosModule } from './exercicios/exercicios.module';
 import { AvaliacoesModule } from './Avaliacoes/avaliacoes.module';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     AvaliacoesModule,
     NgxMaskDirective,
     NgxMaskPipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
     
 
     
