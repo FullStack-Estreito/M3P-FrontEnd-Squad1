@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchData();
+    
   }
 
   fetchData(): void {
@@ -108,22 +109,22 @@ export class DashboardComponent implements OnInit {
   }
 
   buscaUser(event: Event): void {
-    const inputValue = (event.target as HTMLInputElement).value.toLowerCase();
-  
-    if (inputValue === '') {
-      // Campo de busca vazio, não faça nada
-      this.buscaUsuarios = [];
-    } else {
-      // Executar a pesquisa com o termo digitado
-      this.buscaUsuarios = this.usuarios.filter(usuario => {
-        return (
-          usuario.nome.toLowerCase().includes(inputValue) ||
-          usuario.telefone.includes(inputValue) ||
-          usuario.cpf.includes(inputValue)
-        );
-      });
-    }
+  const inputValue = (event.target as HTMLInputElement).value.toLowerCase();
+
+  if (inputValue === '') {
+    // Campo de busca vazio, não faça nada
+    this.buscaUsuarios = [];
+  } else {
+    // Executar a pesquisa com o termo digitado
+    this.buscaUsuarios = this.usuarios.filter(usuario => {
+      return (
+        usuario.nome.toLowerCase().includes(inputValue) ||
+        usuario.telefone.includes(inputValue) ||
+        usuario.cpf.includes(inputValue)
+      );
+    });
   }
+}
   
 
   buscaAluno(event: Event): void {
