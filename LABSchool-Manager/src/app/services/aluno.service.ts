@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { TipoUsuario, User } from '../usuarios/Model/user.model';
 import { Atendimento } from '../Atendimentos/model/atendimento.moel';
 import { Avaliacao } from '../Avaliacoes/model/avaliacoes.model';
@@ -29,8 +29,23 @@ export class AlunoService {
     );
   }
 
-  // Atendimentos
-// Atendimentos
+  getAlunoById(id: number): Observable<User | null> {
+    const url = `${this.apiUrl}/usuario/${id}`;
+    return this.http.get<User>(url).pipe(
+      catchError((error) => {
+        console.error('Erro ao buscar o aluno', error);
+        return of(null); // Retorna um observable vazio se ocorrer um erro
+      })
+    );
+  }
+
+  
+
+  getAlunoId(alunoId: number): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/${alunoId}`);
+  }
+
+ 
 getAtendimentosByAlunoId(id: number): Observable<Atendimento[]> {
   const url = `${this.apiUrl}/atendimentos`;
   console.log(`Fetching all atendimentos from URL: ${url}`);
