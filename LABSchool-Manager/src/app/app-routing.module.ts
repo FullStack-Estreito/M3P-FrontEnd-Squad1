@@ -6,10 +6,12 @@ import { EditComponent as AtendimentoEditComponent } from './Atendimentos/compon
 import { ListComponent as AvaliacaoListComponent } from './Avaliacoes/components/list/list.component';
 import { CreateComponent as AvaliacaoCreateComponent } from './Avaliacoes/components/create/create.component';
 import { EditComponent as AvaliacaoEditComponent } from './Avaliacoes/components/edit/edit.component';
+import { ListComponent as ExercicioListComponent } from './exercicios/components/list/list.component';
+import { CreateComponent as ExercicioCreateComponent } from './exercicios/components/create/create.component';
+import { EditComponent as ExercicioEditComponent } from './exercicios/components/edit/edit.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { ResetPasswordComponent } from './auth/components/reset-password/reset-password.component';
 import { DashboardComponent } from './core/components/dashboard/dashboard.component';
-import { CreateEditComponent as ExercicioCreateEdit } from './exercicios/components/create-edit/create-edit.component';
 import { ListComponent } from './usuarios/components/list/list.component';
 import { DetailsComponent } from './usuarios/components/details/details.component';
 import { WhiteLabelComponent } from './white-label/components/white-label/white-label.component';
@@ -27,7 +29,9 @@ const routes: Routes = [
   { path: 'avaliacoes/list', component: AvaliacaoListComponent },
   { path: 'avaliacoes/create', component: AvaliacaoCreateComponent },
   { path: 'avaliacoes/edit/:id', component: AvaliacaoEditComponent },
-  { path: 'exercicios/edit', component: ExercicioCreateEdit },
+  { path: 'exercicios/list', component: ExercicioListComponent },
+  { path: 'exercicios/create', component: ExercicioCreateComponent },
+  { path: 'exercicios/edit/:id', component: ExercicioEditComponent },
   { path: 'usuarios', component: ListComponent },
   { path: 'usuarios/details', component: DetailsComponent },
   { path: 'alunos', component: DetailsComponent },//componente do modulo usuario

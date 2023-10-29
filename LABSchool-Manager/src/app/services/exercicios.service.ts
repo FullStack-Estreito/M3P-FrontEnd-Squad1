@@ -24,8 +24,24 @@ export class ExerciciosService {
     );
   }
 
+   // Método para obter professores
+   getProfessores(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/usuario`).pipe(
+      map(users => {
+        const professores = users.filter(user => user.tipoUsuario === TipoUsuario.Professor);
+        console.log("Professores filtrados: ", professores);
+        return professores;
+      })
+    );
+  }
+
   createExercicio(exercicio: Exercicio): Observable<Exercicio> {
     return this.http.post<Exercicio>(`${this.apiUrl}/exercicio`, exercicio);
+  }
+
+  // Read
+  getExercicio(id: number): Observable<Exercicio> {
+    return this.http.get<Exercicio>(`${this.apiUrl}/exercicio/${id}`);
   }
 
   getExercicios(): Observable<Exercicio[]> {

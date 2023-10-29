@@ -39,8 +39,8 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {
     this.avaliacaoForm = this.fb.group({
-        titulo: ['', Validators.required],
-        descricao: ['', Validators.required],
+        titulo: ['', Validators.required, Validators.minLength(8), Validators.maxLength(64)],
+        descricao: ['', Validators.required, Validators.minLength(15), Validators.maxLength(255)],
         materia: ['', Validators.required],
         pontuacaoMaxima: ['', Validators.required],
         nota: ['', Validators.required],
@@ -49,18 +49,18 @@ export class EditComponent implements OnInit {
         alunoId: [null, Validators.required]
     });
     //  forkJoin para fazer múltiplas requisições simultâneas.
-    const atendimentoId = +this.route.snapshot.params['id'];
+    const avaliacaoId = +this.route.snapshot.params['id'];
     forkJoin([
         this.avaliacaoService.getAlunos(),
         this.avaliacaoService.getProfessores()
     ]).subscribe((results) => {
         this.alunos = results[0];
         this.professores = results[1];
-        this.getAtendimento(atendimentoId);
+        this.getAvaliacao(avaliacaoId);
     });
   }
 
-  getAtendimento(id: number): void {
+  getAvaliacao(id: number): void {
     this.avaliacaoService.getAvaliacao(id).pipe(catchError(this.handleError)).subscribe(
         (response: any) => {
             if (response && response.avaliacao) {
@@ -89,7 +89,7 @@ export class EditComponent implements OnInit {
   }
 
   salvarAvaliacao(): void {
-    if (!this.avaliacao.descricao || !this.avaliacao.alunoId || !this.avaliacao.codigoProfessor) {
+    if (!this.avaliacao.descricao || !this.avaliacao.titulo || !this.avaliacao.alunoId || !this.avaliacao.codigoProfessor) {
         this.formInvalid = true;
         return;
     }
@@ -133,5 +133,10 @@ export class EditComponent implements OnInit {
   handleError(error: any) {
     console.error('Erro na requisição:', error);
     return throwError(error);
+  }
+
+  isFieldInvalid(field: string): boolean {
+    const formControl = this.avaliacaoForm.get(field);
+    return formControl ? formControl.invalid && (formControl.dirty || formControl.touched) : false;
   }
 }

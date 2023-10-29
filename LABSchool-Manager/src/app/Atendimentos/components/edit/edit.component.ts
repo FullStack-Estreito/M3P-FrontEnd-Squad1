@@ -40,7 +40,7 @@ export class EditComponent implements OnInit {
         alunoId: [null, Validators.required],
         pedagogoId: [null, Validators.required],
         dataHora: '',
-        descricao: ['', Validators.required],
+        descricao: ['', Validators.required, Validators.minLength(8), Validators.maxLength(64)],
         statusAtivo: [false]
     });
     //  forkJoin para fazer múltiplas requisições simultâneas.
@@ -129,5 +129,10 @@ export class EditComponent implements OnInit {
   handleError(error: any) {
     console.error('Erro na requisição:', error);
     return throwError(error);
+  }
+
+  isFieldInvalid(field: string): boolean {
+    const formControl = this.atendimentoForm.get(field);
+    return formControl ? formControl.invalid && (formControl.dirty || formControl.touched) : false;
   }
 }

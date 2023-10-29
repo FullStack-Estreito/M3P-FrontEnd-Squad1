@@ -39,9 +39,9 @@
         <label for="descricaoAtendimento">Descrição:</label>
         <input type="text" class="form-control" id="descricaoAtendimento" formControlName="descricao"
           placeholder="Descrição do atendimento" [class.is-invalid]="isFieldInvalid('descricao')"
-          [class.is-valid]="isFieldValid('descricao')">
-        <div *ngIf="isFieldInvalid('descricao')" class="invalid-feedback">
-            A descrição do atendimento é obrigatória.
+          [class.is-valid]="isFieldValid('descricao')" minlength="8" maxlength="64">
+        <div *ngIf="isFieldInvalid('titulo')" class="invalid-feedback">
+          A descrição do atendimento é obrigatória e deve ter no mínimo 8 caracteres.
         </div>
       </div>
       <div class="form-group">
