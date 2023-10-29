@@ -19,7 +19,11 @@
 
 @media (max-width: 992px) {
   .container-fluid {
-    height: 50vh;
+    height: -1vh;
+  }
+  .navbar {
+    height: 100px;
+    align-items: baseline;   
   }
 }
 
