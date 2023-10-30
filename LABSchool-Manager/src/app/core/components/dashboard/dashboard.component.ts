@@ -4,6 +4,8 @@ import { User } from '../../../usuarios/Model/user.model';
 import { Router } from '@angular/router';
 import { Atendimento } from 'src/app/Atendimentos/model/atendimento.moel';
 import Chart from 'chart.js/auto';
+import { AuthService } from '../../../services/auth.service'; // Ajuste o caminho para o correto
+
 
 @Component({
   selector: 'app-dashboard',
@@ -25,7 +27,8 @@ export class DashboardComponent implements OnInit {
 
   @ViewChild('chartRef') chartRef: ElementRef | undefined;
 
-  constructor(private dashboardService: DashboardService, private router: Router) { }
+  constructor(private dashboardService: DashboardService, private router: Router, private authService: AuthService) { }
+
 
   ngOnInit(): void {
     this.fetchData();
@@ -95,6 +98,9 @@ export class DashboardComponent implements OnInit {
   }
 
 
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+}
 
   onSearch(query: string): void {
     
