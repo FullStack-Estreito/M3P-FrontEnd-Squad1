@@ -32,7 +32,7 @@ Frontend da LABSchool-Manager, uma aplicação Angular integrada com a API RESTf
 1. A aplicação está completamente integrada com a API. Certifique-se de que a API está rodando em `http://localhost:5203` para garantir o funcionamento correto do frontend.
 2. Certifique-se de ter criado um usuário administrador e um whitelabel, pelo swagger da API através dos endpoints POST. O frontend possui autenticação de login e somente dará o primeiro acesso ao sistema para um usuário administrador. 
 
-Usuário Admministrador:
+Usuário Admministrador (Admin é do tipoUsuario 0):
 ```
 {
   "nome": "stringst",
