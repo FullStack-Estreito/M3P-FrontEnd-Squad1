@@ -12,7 +12,9 @@
   }
   
   /* Estilos para telas com largura menor que 768 pixels */
-  @media (max-width: 835) {
-    
+  @media (max-width: 850px) {
+    #responsividade {
+        width: 70vw;
+    }
   }
   
