@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';  // Importe o AuthService
+import { AuthService } from 'src/app/services/auth.service';
+import { TipoUsuario } from 'src/app/usuarios/Model/user.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,15 +10,20 @@ import { AuthService } from 'src/app/services/auth.service';  // Importe o AuthS
 })
 export class SidebarComponent {
 
-  // Injete tanto o Router quanto o AuthService no construtor
   constructor(private router: Router, private authService: AuthService) { }
+ 
+  isAluno(): boolean {
+    const user = this.authService.getCurrentUserValue();
+    return user && user.tipoUsuario === TipoUsuario.Aluno;
+}
 
-  // Método para navegar programaticamente
+
+
   navigateTo(route: string) {
     this.router.navigate([route]);
   }
 
-  // Método de Logout
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);

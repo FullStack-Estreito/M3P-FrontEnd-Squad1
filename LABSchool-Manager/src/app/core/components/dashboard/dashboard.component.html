@@ -83,7 +83,7 @@
     <br>
 
     <!-- Lista de Alunos -->
-    <div class="col-12 col-sm-8 mx-auto"style="width: 900px;">
+    <div *ngIf="isAdmin()" class="col-12 col-sm-8 mx-auto" style="width: 900px;">
         <input type="text" placeholder="Pesquisar por nome, telefone ou CPF" class="form-control mb-3" (input)="buscaAluno($event)">
 
         <div class="card">
