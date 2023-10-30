@@ -40,7 +40,7 @@ Usuário Admministrador (Admin é do tipoUsuario 0):
   "cpf": "12345678901",
   "statusAtivo": true,
   "telefone": "(11) 98765-4321",
-  "email": "lab365@g   mail.com",
+  "email": "lab365@gmail.com",
   "senha": "123456",
   "tipoUsuario": 0,
   "matricula": 0,
