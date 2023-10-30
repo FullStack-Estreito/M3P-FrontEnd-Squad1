@@ -1,0 +1,24 @@
+
+.container{
+   padding-top: 30px;
+   display: flex;
+   flex-direction: column;
+}
+div {
+   flex-direction: column;
+}
+button, input {
+    margin-bottom: 10px;
+}
+@media (max-width: 1250px) {
+    .container {
+     width: 60%;
+     padding-top: 150px;
+   }
+}
+
+
+
+
+ 
+    
