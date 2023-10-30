@@ -17,29 +17,31 @@ import { DetailsComponent } from './usuarios/components/details/details.componen
 import { WhiteLabelComponent } from './white-label/components/white-label/white-label.component';
 import { LogsComponent } from './logs/components/logs/logs.component';
 import { CreateEditComponent} from './usuarios/components/create-edit/create-edit.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
-  { path: 'reset-password', component: ResetPasswordComponent },
-  { path: 'atendimentos/list', component: AtendimentoListComponent },
-  { path: 'atendimentos/create', component: AtendimentoCreateComponent },
-  { path: 'atendimentos/edit/:id', component: AtendimentoEditComponent },
-  { path: 'avaliacoes/list', component: AvaliacaoListComponent },
-  { path: 'avaliacoes/create', component: AvaliacaoCreateComponent },
-  { path: 'avaliacoes/edit/:id', component: AvaliacaoEditComponent },
-  { path: 'exercicios/list', component: ExercicioListComponent },
-  { path: 'exercicios/create', component: ExercicioCreateComponent },
-  { path: 'exercicios/edit/:id', component: ExercicioEditComponent },
-  { path: 'usuarios', component: ListComponent },
-  { path: 'usuarios/details', component: DetailsComponent },
-  { path: 'alunos', component: DetailsComponent },//componente do modulo usuario
-  { path: 'alunos/:id', component: DetailsComponent },
-  { path: 'usuarios/list', component: CreateEditComponent },
-  { path: 'usuarios/criar-editar', component: CreateEditComponent },
-  { path: 'white-label', component: WhiteLabelComponent },
-  { path: 'logs', component: LogsComponent },
+  { path: 'reset-password', component: ResetPasswordComponent, canActivate: [AuthGuard]},
+  { path: 'atendimentos/list', component: AtendimentoListComponent, canActivate: [AuthGuard] },
+  { path: 'atendimentos/create', component: AtendimentoCreateComponent, canActivate: [AuthGuard]},
+  { path: 'atendimentos/edit/:id', component: AtendimentoEditComponent, canActivate: [AuthGuard] },
+  { path: 'avaliacoes/list', component: AvaliacaoListComponent, canActivate: [AuthGuard] },
+  { path: 'avaliacoes/create', component: AvaliacaoCreateComponent,canActivate: [AuthGuard] },
+  { path: 'avaliacoes/edit/:id', component: AvaliacaoEditComponent, canActivate: [AuthGuard] },
+  { path: 'exercicios/list', component: ExercicioListComponent, canActivate: [AuthGuard] },
+  { path: 'exercicios/create', component: ExercicioCreateComponent, canActivate: [AuthGuard]},
+  { path: 'exercicios/edit/:id', component: ExercicioEditComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios', component: ListComponent, canActivate: [AuthGuard]},
+  { path: 'usuarios/details', component: DetailsComponent, canActivate: [AuthGuard] },
+  { path: 'alunos', component: DetailsComponent, canActivate: [AuthGuard]},
+  { path: 'alunos/:id', component: DetailsComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios/list', component: CreateEditComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios/criar-editar', component: CreateEditComponent, canActivate: [AdminGuard] },
+  { path: 'white-label', component: WhiteLabelComponent, canActivate: [AuthGuard] },
+  { path: 'logs', component: LogsComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/dashboard' } 
 ];
 
