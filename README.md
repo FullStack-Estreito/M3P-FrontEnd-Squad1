@@ -29,8 +29,46 @@ Frontend da LABSchool-Manager, uma aplicação Angular integrada com a API RESTf
 
 ## Uso
 
-- A aplicação está completamente integrada com a API. Certifique-se de que a API está rodando em `http://localhost:5203` para garantir o funcionamento correto do frontend.
+1. A aplicação está completamente integrada com a API. Certifique-se de que a API está rodando em `http://localhost:5203` para garantir o funcionamento correto do frontend.
+2. Certifique-se de ter criado um usuário administrador e um whitelabel, pelo swagger da API através dos endpoints POST. O frontend possui autenticação de login e somente dará o primeiro acesso ao sistema para um usuário administrador. 
 
+Usuário Admministrador:
+```
+{
+  "nome": "stringst",
+  "genero": 0,
+  "cpf": "stringstrin",
+  "statusAtivo": true,
+  "telefone": "stringstringstr",
+  "email": "user@example.com",
+  "senha": "string",
+  "tipoUsuario": 0,
+  "matricula": 0,
+  "codigoProfessor": 0,
+  "whiteLabelId": 0,
+  "endereco": {
+    "cep": "stringstr",
+    "cidade": "string",
+    "estado": 0,
+    "logradouro": "string",
+    "numero": "string",
+    "complemento": "string",
+    "bairro": "string",
+    "referencia": "string"
+  }
+}
+````
+
+White Label:
+```
+{
+  "nomeEmpresa": "string",
+  "slogan": "string",
+  "cores": "string",
+  "urlLogo": "string",
+  "complemento": "string"
+}
+```
 ## Estrutura do Projeto
 
 - **/src/app**: Contém os componentes, serviços e modelos da aplicação.
