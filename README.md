@@ -35,26 +35,26 @@ Frontend da LABSchool-Manager, uma aplicação Angular integrada com a API RESTf
 Usuário Admministrador (Admin é do tipoUsuario 0):
 ```
 {
-  "nome": "stringst",
+  "nome": "Admin Lab 365",
   "genero": 0,
-  "cpf": "stringstrin",
+  "cpf": "12345678901",
   "statusAtivo": true,
-  "telefone": "stringstringstr",
-  "email": "user@example.com",
-  "senha": "string",
+  "telefone": "(11) 98765-4321",
+  "email": "lab365@g   mail.com",
+  "senha": "123456",
   "tipoUsuario": 0,
   "matricula": 0,
-  "codigoProfessor": 0,
-  "whiteLabelId": 0,
+  "codigoProfessor":0,
+  "whiteLabelId": 1,
   "endereco": {
-    "cep": "stringstr",
-    "cidade": "string",
+    "cep": "12345-678",
+    "cidade": "São Paulo",
     "estado": 0,
-    "logradouro": "string",
-    "numero": "string",
-    "complemento": "string",
-    "bairro": "string",
-    "referencia": "string"
+    "logradouro": "Rua das Flores",
+    "numero": "123",
+    "complemento": "Apto 45",
+    "bairro": "Jardins",
+    "referencia": "Próximo ao mercado central"
   }
 }
 ````
@@ -62,11 +62,11 @@ Usuário Admministrador (Admin é do tipoUsuario 0):
 White Label:
 ```
 {
-  "nomeEmpresa": "string",
-  "slogan": "string",
-  "cores": "string",
-  "urlLogo": "string",
-  "complemento": "string"
+    "nomeEmpresa": "Lab School",
+    "slogan": "Seu futuro em primeiro lugar!",
+    "cores": "#d3d3d3, #17a2b8",
+    "urlLogo": "https://github.com/FeReDragon/Avalicao-modulo2-FullStack-Senai/blob/main/LABSchool_Manager/src/assets/img/labScool-logo.png?raw=true",
+    "complemento": "Informações adicionais aqui"
 }
 ```
 ## Estrutura do Projeto
