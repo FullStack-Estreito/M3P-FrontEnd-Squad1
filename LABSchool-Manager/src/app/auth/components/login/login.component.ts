@@ -32,7 +32,7 @@ export class LoginComponent {
 
        
         if (authenticated) {
-          this.router.navigate(['/dashbord']);
+          this.router.navigate(['/dashboard']);
         } else {
           this.errorMessage = 'Credenciais inválidas. Por favor, tente novamente.';
         }

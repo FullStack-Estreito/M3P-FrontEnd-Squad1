@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
-  { path: 'reset-password', component: ResetPasswordComponent, canActivate: [AuthGuard]},
+  { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'atendimentos/list', component: AtendimentoListComponent, canActivate: [AuthGuard] },
   { path: 'atendimentos/create', component: AtendimentoCreateComponent, canActivate: [AuthGuard]},
   { path: 'atendimentos/edit/:id', component: AtendimentoEditComponent, canActivate: [AuthGuard] },
