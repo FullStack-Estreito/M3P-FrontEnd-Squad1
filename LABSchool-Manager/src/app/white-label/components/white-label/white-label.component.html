@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-12">
             <h2>White Labels</h2>
-            <div class="column">
+            <div class="row">
                 <div class="col-md-4 mb-4" *ngFor="let whiteLabel of whiteLabels" (click)="selectWhiteLabel(whiteLabel)">
                     <div class="card" style="width: 350px; height: 450px; overflow: hidden;">
                         <img [src]="whiteLabel.urlLogo" alt="Logo da empresa" class="card-img-top" style="width: 50%; display: block; margin: auto;">
@@ -21,7 +21,7 @@
                               </div>
                           </div>
                             <p class="card-text">{{ whiteLabel.complemento }}</p>
-                            <a href="#" class="btn btn-primary">Editar</a>
+                            <button class="btn btn-info" disabled>Editar</button>
                         </div>
                     </div>
                 </div>
