@@ -13,7 +13,7 @@
     margin-bottom: 40px;    
 }
 .scrollable-container {
-  max-height: 300px; /* Defina a altura desejada para a barra de rolagem */
+  max-height: 300px; 
   overflow-y: scroll;
 }
 .form-control{
@@ -26,19 +26,39 @@
     border-radius: 20px;
 }
 .my-custom-margin {
-    margin-right: 40px; /* Adicione o espaçamento desejado */
-  }
+    margin-right: 40px;
+}
+
+.my-custom-padding {
+  padding: 10px; 
+}
+i{
+  margin-right: 10px;
   
-  .my-custom-padding {
-    padding: 10px; /* Adicione o espaçamento desejado */
-  }
-  i{
-    margin-right: 10px;
-    
-  }
-  .fas{
-    margin-left: 15px;
-  }
+}
+.fas {
+  margin-left: 15px;
+}
+   
   
-  
+@media (max-width: 1480px) {
+  .card {
+    max-width: 40vw;
+  }
+  .form-control {
+    max-width: 40vw;
+  }
+}
+
+@media (max-width: 1250px) {
+  .card {
+    max-width: 35vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .card {
+    max-width: 30vw;
+  }
+}
   
