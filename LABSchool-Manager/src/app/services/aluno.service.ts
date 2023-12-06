@@ -13,7 +13,7 @@ import { Endereco } from '../usuarios/components/details/endereco.model';
 })
 export class AlunoService {
 
-  private apiUrl = 'http://localhost:5203/api';
+  private apiUrl = 'https://labschoolmanagerback.azurewebsites.net/api';
 
   constructor(private http: HttpClient) { }
 

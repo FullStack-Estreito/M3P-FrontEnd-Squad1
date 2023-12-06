@@ -8,7 +8,7 @@ import { TipoUsuario } from '../usuarios/Model/user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_URL = 'http://localhost:5203/api/usuario';
+  private readonly API_URL = 'https://labschoolmanagerback.azurewebsites.net/api/usuario';
   public currentUserSubject: BehaviorSubject<any | null>;
   public currentUser: Observable<any | null>;
 

@@ -13,7 +13,7 @@ import { Exercicio } from '../exercicios/model/exercicios.model';
 })
 export class DashboardService {
 
-  private apiUrl = 'http://localhost:5203/api';
+  private apiUrl = 'https://labschoolmanagerback.azurewebsites.net/api';
 
   constructor(private http: HttpClient) { }
 

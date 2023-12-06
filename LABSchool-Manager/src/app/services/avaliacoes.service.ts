@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class AvaliacoesService {
 
-  private apiUrl: string = "http://localhost:5203/api";
+  private apiUrl: string = "https://labschoolmanagerback.azurewebsites.net/api";
 
   constructor(private http: HttpClient) { }
 

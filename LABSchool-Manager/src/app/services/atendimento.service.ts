@@ -10,7 +10,7 @@ import { Atendimento } from '../Atendimentos/model/atendimento.moel';
 })
 export class AtendimentoService {
 
-  private apiUrl = 'http://localhost:5203/api';
+  private apiUrl = 'https://labschoolmanagerback.azurewebsites.net/api';
 
   constructor(private http: HttpClient) { }
 

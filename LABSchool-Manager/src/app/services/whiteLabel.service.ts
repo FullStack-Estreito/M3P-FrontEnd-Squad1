@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class WhiteLabelService {
-    private baseUrl = 'http://localhost:5203/api/whiteLabel'; 
+    private baseUrl = 'https://labschoolmanagerback.azurewebsites.net/api/whiteLabel'; 
 
   constructor(private httpClient: HttpClient) { }
 

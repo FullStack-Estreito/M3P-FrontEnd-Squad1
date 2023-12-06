@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private baseUrl = 'http://localhost:5203/api/usuario';  // Substitua pela URL da sua API
+  private baseUrl = 'https://labschoolmanagerback.azurewebsites.net/api/usuario';  // Substitua pela URL da sua API
   
   constructor(private http: HttpClient) { }
 
