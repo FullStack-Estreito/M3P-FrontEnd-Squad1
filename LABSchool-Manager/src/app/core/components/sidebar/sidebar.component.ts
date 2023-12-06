@@ -17,6 +17,11 @@ export class SidebarComponent {
     return user && user.tipoUsuario === TipoUsuario.Aluno;
 }
 
+isAdministrador(): boolean {
+  const user = this.authService.getCurrentUserValue();
+  return user && user.tipoUsuario === TipoUsuario.Administrador;
+}
+
 
 
   navigateTo(route: string) {
